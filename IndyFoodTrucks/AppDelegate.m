@@ -7,12 +7,47 @@
 //
 
 #import "AppDelegate.h"
+#import "MSDynamicsDrawerViewController.h"
+#import "MSDynamicsDrawerStyler.h"
+#import "MenuViewController.h"
+#import "MapViewController.h"
+
+@interface AppDelegate () <MSDynamicsDrawerViewControllerDelegate>
+
+@property (nonatomic, strong) UIImageView *windowBackground;
+
+@end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    self.dynamicsDrawerViewController = (MSDynamicsDrawerViewController *)self.window.rootViewController;
+    
+    self.dynamicsDrawerViewController.delegate = self;
+    
+    // Add some example stylers
+    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerScaleStyler styler], [MSDynamicsDrawerFadeStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
+    [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionRight];
+    
+    MenuViewController *menuViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
+    MenuViewController *mapViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Map"];
+    
+    menuViewController.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
+    [self.dynamicsDrawerViewController setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
+    
+    // Transition to the first view controller
+    UINavigationController *paneNavigationViewController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
+    [self.dynamicsDrawerViewController setPaneViewController:paneNavigationViewController animated:nil completion:nil];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = self.dynamicsDrawerViewController;
+    [self.window makeKeyAndVisible];
+    [self.window addSubview:self.windowBackground];
+    [self.window sendSubviewToBack:self.windowBackground];
+    
     return YES;
 }
 							
