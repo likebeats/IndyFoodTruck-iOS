@@ -22,10 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:
+                                      [UIColor whiteColor], NSForegroundColorAttributeName,
+                                      nil];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#6faea4"]];
+    [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+    
     // Override point for customization after application launch.
-    
     self.dynamicsDrawerViewController = (MSDynamicsDrawerViewController *)self.window.rootViewController;
-    
     self.dynamicsDrawerViewController.delegate = self;
     
     // Add some example stylers
@@ -33,9 +37,9 @@
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionRight];
     
     MenuViewController *menuViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    MenuViewController *mapViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Map"];
+    MapViewController *mapViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Map"];
     
-    menuViewController.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
+    mapViewController.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
     [self.dynamicsDrawerViewController setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
     
     // Transition to the first view controller

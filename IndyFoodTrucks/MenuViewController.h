@@ -8,6 +8,4 @@
 
 @interface MenuViewController : UIViewController
 
-@property (nonatomic, weak) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
-
 @end

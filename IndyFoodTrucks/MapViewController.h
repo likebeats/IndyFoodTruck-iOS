@@ -8,4 +8,6 @@
 
 @interface MapViewController : UIViewController
 
+@property (nonatomic, weak) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
+
 @end

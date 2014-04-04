@@ -26,7 +26,31 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.title = @"#IndyTrucks";
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    UIImage *menuBtnImage = [UIImage imageNamed:@"menu_icon"];
+    CGRect menuBtnImageFrame = CGRectMake(0, 0, menuBtnImage.size.width, menuBtnImage.size.height);
+    UIButton *menuBtn = [[UIButton alloc] initWithFrame:menuBtnImageFrame];
+    [menuBtn setImage:menuBtnImage forState:UIControlStateNormal];
+    [menuBtn setTitle:nil forState:UIControlStateNormal];
+    [menuBtn addTarget:self action:@selector(onMenuBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *menuBtnItem = [[UIBarButtonItem alloc] initWithCustomView:menuBtn];
+    self.navigationItem.leftBarButtonItem = menuBtnItem;
+}
+
+- (void)onMenuBtnClick
+{
+    [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateOpen
+                                        inDirection:MSDynamicsDrawerDirectionLeft
+                                           animated:YES
+                              allowUserInterruption:YES
+                                         completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
