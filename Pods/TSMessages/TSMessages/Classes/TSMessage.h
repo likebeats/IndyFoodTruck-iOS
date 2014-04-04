@@ -83,6 +83,38 @@ typedef NS_ENUM(NSInteger,TSMessageNotificationDuration) {
                                 subtitle:(NSString *)subtitle
                                     type:(TSMessageNotificationType)type;
 
+/** Shows a notification message in a specific view controller with a specific duration
+ @param viewController The view controller to show the notification in.
+ You can use +setDefaultViewController: to set the the default one instead
+ @param title The title of the notification view
+ @param subtitle The text that is displayed underneath the title
+ @param type The notification type (Message, Warning, Error, Success)
+ @param duration The duration of the notification being displayed
+ */
++ (void)showNotificationInViewController:(UIViewController *)viewController
+                                   title:(NSString *)title
+                                subtitle:(NSString *)subtitle
+                                    type:(TSMessageNotificationType)type
+                                duration:(NSTimeInterval)duration;
+
+/** Shows a notification message in a specific view controller with a specific duration
+ @param viewController The view controller to show the notification in.
+ You can use +setDefaultViewController: to set the the default one instead
+ @param title The title of the notification view
+ @param subtitle The text that is displayed underneath the title
+ @param type The notification type (Message, Warning, Error, Success)
+ @param duration The duration of the notification being displayed
+ @param dismissingEnabled Should the message be dismissed when the user taps/swipes it
+ */
++ (void)showNotificationInViewController:(UIViewController *)viewController
+                                   title:(NSString *)title
+                                subtitle:(NSString *)subtitle
+                                    type:(TSMessageNotificationType)type
+                                duration:(NSTimeInterval)duration
+                     canBeDismissedByUser:(BOOL)dismissingEnabled;
+
+
+
 /** Shows a notification message in a specific view controller
  @param viewController The view controller to show the notification in.
  @param title The title of the notification view
@@ -132,5 +164,10 @@ typedef NS_ENUM(NSInteger,TSMessageNotificationDuration) {
 /** Indicates whether currently the iOS 7 style of TSMessages is used
  This depends on the Base SDK and the currently used device */
 + (BOOL)iOS7StyleEnabled;
+
+/** Indicates whether the current navigationBar is hidden by isNavigationBarHidden 
+ on the UINavigationController or isHidden on the navigationBar of the current 
+ UINavigationController */
++ (BOOL)isNavigationBarInNavigationControllerHidden:(UINavigationController *)navController;
 
 @end

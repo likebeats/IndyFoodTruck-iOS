@@ -69,6 +69,45 @@ __weak static UIViewController *_defaultViewController;
                                    title:(NSString *)title
                                 subtitle:(NSString *)subtitle
                                     type:(TSMessageNotificationType)type
+                                duration:(NSTimeInterval)duration
+{
+    [self showNotificationInViewController:viewController
+                                     title:title
+                                  subtitle:subtitle
+                                     image:nil
+                                      type:type
+                                  duration:duration
+                                  callback:nil
+                               buttonTitle:nil
+                            buttonCallback:nil
+                                atPosition:TSMessageNotificationPositionTop
+                       canBeDismissedByUser:YES];
+}
+
++ (void)showNotificationInViewController:(UIViewController *)viewController
+                                   title:(NSString *)title
+                                subtitle:(NSString *)subtitle
+                                    type:(TSMessageNotificationType)type
+                                duration:(NSTimeInterval)duration
+                     canBeDismissedByUser:(BOOL)dismissingEnabled
+{
+    [self showNotificationInViewController:viewController
+                                     title:title
+                                  subtitle:subtitle
+                                     image:nil
+                                      type:type
+                                  duration:duration
+                                  callback:nil
+                               buttonTitle:nil
+                            buttonCallback:nil
+                                atPosition:TSMessageNotificationPositionTop
+                       canBeDismissedByUser:dismissingEnabled];
+}
+
++ (void)showNotificationInViewController:(UIViewController *)viewController
+                                   title:(NSString *)title
+                                subtitle:(NSString *)subtitle
+                                    type:(TSMessageNotificationType)type
 {
     [self showNotificationInViewController:viewController
                                      title:title
@@ -173,9 +212,9 @@ __weak static UIViewController *_defaultViewController;
         
         BOOL isViewIsUnderStatusBar = [[[currentNavigationController childViewControllers] firstObject] wantsFullScreenLayout];
         if (!isViewIsUnderStatusBar && currentNavigationController.parentViewController == nil) {
-            isViewIsUnderStatusBar = ![currentNavigationController isNavigationBarHidden]; // strange but true
+            isViewIsUnderStatusBar = ![TSMessage isNavigationBarInNavigationControllerHidden:currentNavigationController]; // strange but true
         }
-        if (![currentNavigationController isNavigationBarHidden])
+        if (![TSMessage isNavigationBarInNavigationControllerHidden:currentNavigationController])
         {
             [currentNavigationController.view insertSubview:currentView
                                                belowSubview:[currentNavigationController navigationBar]];
@@ -261,6 +300,17 @@ __weak static UIViewController *_defaultViewController;
                                       withObject:currentView
                                       afterDelay:currentView.duration];
                        });
+    }
+}
+
++ (BOOL)isNavigationBarInNavigationControllerHidden:(UINavigationController *)navController
+{
+    if([navController isNavigationBarHidden]) {
+        return YES;
+    } else if ([[navController navigationBar] isHidden]) {
+        return YES;
+    } else {
+        return NO;
     }
 }
 

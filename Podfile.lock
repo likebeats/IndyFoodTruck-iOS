@@ -1,10 +1,16 @@
 PODS:
+  - HexColors (2.2.1)
   - MSDynamicsDrawerViewController (1.5.1)
+  - TSMessages (0.9.6):
+    - HexColors
 
 DEPENDENCIES:
   - MSDynamicsDrawerViewController
+  - TSMessages
 
 SPEC CHECKSUMS:
+  HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   MSDynamicsDrawerViewController: 2409ca61449d8541a3ee640bfd2d230c3734d3c4
+  TSMessages: 839edc3164b99ced48c30af9dde9710cd67bea4d
 
 COCOAPODS: 0.29.0

@@ -1,1 +1,2 @@
 pod 'MSDynamicsDrawerViewController'
+pod 'TSMessages'
