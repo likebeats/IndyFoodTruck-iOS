@@ -7,6 +7,7 @@
 //
 
 #import "MapViewController.h"
+#import "TruckFormViewController.h"
 
 @interface MapViewController ()
 
@@ -28,6 +29,8 @@
     [super viewDidLoad];
     
     self.title = @"#IndyTrucks";
+    
+    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"] animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
