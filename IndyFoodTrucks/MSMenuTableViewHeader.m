@@ -45,9 +45,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        UIView *backgoundView = [UIView new];
-        backgoundView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.25];
-        self.backgroundView = backgoundView;
+        
     }
     return self;
 }

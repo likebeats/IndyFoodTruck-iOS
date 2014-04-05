@@ -36,12 +36,12 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
         self.textLabel.textColor = [UIColor whiteColor];
-        self.textLabel.font = [UIFont boldSystemFontOfSize:18.0];
-        UIView *selectedBackgroundView = [UIView new];
-        selectedBackgroundView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.25];
-        self.selectedBackgroundView = selectedBackgroundView;
+        //self.textLabel.font = [UIFont systemFontOfSize:16.0];
+        
+        UIView *myBackView = [[UIView alloc] initWithFrame:self.frame];
+        myBackView.backgroundColor = [UIColor colorWithRed:20.0f/255.0f green:26.0f/255.0f blue:35.0f/255.0f alpha:1.0f];
+        self.selectedBackgroundView = myBackView;
     }
     return self;
 }
