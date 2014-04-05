@@ -14,6 +14,7 @@
 #import "TruckForm.h"
 #import "TruckDetailViewController.h"
 #import "TrucksViewController.h"
+#import "YelpTruckViewController.h"
 
 #define ARCHIVE_FAV_TRUCKS_KEY @"ARCHIVE_FAV_TRUCKS_KEY"
 
