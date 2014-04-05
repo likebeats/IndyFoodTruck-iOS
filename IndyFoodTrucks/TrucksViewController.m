@@ -8,6 +8,7 @@
 
 #import "TrucksViewController.h"
 #import "TruckFormViewController.h"
+#import "YelpTruckViewController.h"
 
 @interface TrucksViewController (){
     NSMutableArray *trucks;
@@ -46,8 +47,12 @@
 
 - (void)onAddBtnClicked:(id)sender
 {
-    TruckFormViewController *truckFormViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"];
-    [self.navigationController pushViewController:truckFormViewController animated:YES];
+   // TruckFormViewController *truckFormViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"];
+    //[self.navigationController pushViewController:truckFormViewController animated:YES];
+    
+    
+    YelpTruckViewController *yelpTruckViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"YelpTruckViewController"];
+    [self.navigationController pushViewController:yelpTruckViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

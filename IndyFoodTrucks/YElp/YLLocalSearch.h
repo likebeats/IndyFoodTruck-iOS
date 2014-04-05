@@ -18,7 +18,8 @@
 - (instancetype)initWithMap:(MKMapView *)mapView;
 
 - (void)localSearchWithTerm:(NSString *)searchTerm
-                    success:(void(^)(YLLocalSearchResponse* response)) success
+                     offset:(NSNumber *)offset
+                    success:(void(^)(NSMutableArray* response)) success
                     failure:(void(^)(NSError* error)) failure;
 
 @end
