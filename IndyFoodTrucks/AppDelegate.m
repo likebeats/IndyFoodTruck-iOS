@@ -57,9 +57,7 @@
     [Parse setApplicationId:@"haTczq6g3pIpm2icxtsnjlNOf8daXRXnXBEw1eOA"
                   clientKey:@"eEB7Vqj0JPtI7GnBLLOuTHGAeknefMDUROsoikXN"];
     
-//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-//    testObject[@"foo"] = @"bar";
-//    [testObject saveInBackground];
+[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
 }
