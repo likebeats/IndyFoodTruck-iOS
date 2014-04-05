@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -50,12 +50,68 @@
                     <view key="view" contentMode="scaleToFill" id="nXo-UJ-49q">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5U1-c1-hBr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEx-et-fqv">
+                                <rect key="frame" x="213" y="530" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="621-xk-c9D"/>
+                                    <constraint firstAttribute="height" constant="30" id="P1j-Xh-4DB"/>
+                                </constraints>
+                                <state key="normal" title="Truck Owners">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Kx0-0B-2J0" kind="push" id="BOe-Yc-aI4"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="BEx-et-fqv" secondAttribute="trailing" constant="12" id="07O-cc-cPz"/>
+                            <constraint firstItem="JiL-MJ-DnU" firstAttribute="top" secondItem="BEx-et-fqv" secondAttribute="bottom" constant="8" id="0ag-3F-bti"/>
+                            <constraint firstItem="5U1-c1-hBr" firstAttribute="leading" secondItem="nXo-UJ-49q" secondAttribute="leading" id="EOB-1Q-6H2"/>
+                            <constraint firstItem="JiL-MJ-DnU" firstAttribute="top" secondItem="5U1-c1-hBr" secondAttribute="bottom" id="SFN-D2-hpP"/>
+                            <constraint firstItem="5U1-c1-hBr" firstAttribute="top" secondItem="nXo-UJ-49q" secondAttribute="top" id="dg0-cr-BAg"/>
+                            <constraint firstAttribute="trailing" secondItem="5U1-c1-hBr" secondAttribute="trailing" id="vDI-TC-6rt"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spn-fX-Tl6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1092" y="67"/>
+        </scene>
+        <!--Truck Login View Controller-->
+        <scene sceneID="2Bp-T6-qlU">
+            <objects>
+                <viewController id="Kx0-0B-2J0" customClass="TruckLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aaU-oN-Cr1"/>
+                        <viewControllerLayoutGuide type="bottom" id="c2W-BE-taG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M1C-Rz-Q9E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dhM-WI-2L1">
+                                <rect key="frame" x="137" y="269" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Sp0-Cx-AHr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ll6-ma-O5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="790" y="506"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

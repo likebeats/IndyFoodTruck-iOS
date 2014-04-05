@@ -36,6 +36,9 @@
 		65E9656A18EF837C000877C4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656918EF837C000877C4 /* Social.framework */; };
 		65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9656D18EF8422000877C4 /* FBMissingSymbols.m */; };
 		65E9656F18EF8422000877C4 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9656D18EF8422000877C4 /* FBMissingSymbols.m */; };
+		65E9657318EF8629000877C4 /* TruckLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9657218EF8629000877C4 /* TruckLoginViewController.m */; };
+		65E9657418EF8629000877C4 /* TruckLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9657218EF8629000877C4 /* TruckLoginViewController.m */; };
+		65E9657618EF8708000877C4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9657518EF8708000877C4 /* MapKit.framework */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 /* End PBXBuildFile section */
@@ -84,6 +87,9 @@
 		65E9656718EF8363000877C4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		65E9656918EF837C000877C4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		65E9656D18EF8422000877C4 /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBMissingSymbols.m; path = IndyFoodTrucks/FBMissingSymbols.m; sourceTree = SOURCE_ROOT; };
+		65E9657118EF8629000877C4 /* TruckLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckLoginViewController.h; sourceTree = "<group>"; };
+		65E9657218EF8629000877C4 /* TruckLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckLoginViewController.m; sourceTree = "<group>"; };
+		65E9657518EF8708000877C4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -95,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E9657618EF8708000877C4 /* MapKit.framework in Frameworks */,
 				65E9656A18EF837C000877C4 /* Social.framework in Frameworks */,
 				65E9656818EF8363000877C4 /* Accounts.framework in Frameworks */,
 				65E9656618EF8309000877C4 /* SystemConfiguration.framework in Frameworks */,
@@ -150,6 +157,7 @@
 		65606AEF18EB3437007954BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65E9657518EF8708000877C4 /* MapKit.framework */,
 				65E9656918EF837C000877C4 /* Social.framework */,
 				65E9656718EF8363000877C4 /* Accounts.framework */,
 				65E9656518EF8309000877C4 /* SystemConfiguration.framework */,
@@ -230,6 +238,8 @@
 				EB624DF218EF5F0C00770C4B /* MenuViewController.m */,
 				EB624DF418EF61E300770C4B /* MapViewController.h */,
 				EB624DF518EF61E300770C4B /* MapViewController.m */,
+				65E9657118EF8629000877C4 /* TruckLoginViewController.h */,
+				65E9657218EF8629000877C4 /* TruckLoginViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -377,6 +387,7 @@
 				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
 				65606B0A18EB3437007954BB /* RootViewController.m in Sources */,
 				65606B0118EB3437007954BB /* AppDelegate.m in Sources */,
+				65E9657318EF8629000877C4 /* TruckLoginViewController.m in Sources */,
 				EB624DF618EF61E300770C4B /* MapViewController.m in Sources */,
 				65606AFD18EB3437007954BB /* main.m in Sources */,
 				EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */,
@@ -388,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E9656F18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
+				65E9657418EF8629000877C4 /* TruckLoginViewController.m in Sources */,
 				65606B1F18EB3438007954BB /* IndyFoodTrucksTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
