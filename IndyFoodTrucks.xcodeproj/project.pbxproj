@@ -43,6 +43,8 @@
 		65E965A518EFAD04000877C4 /* MSMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A218EFAD04000877C4 /* MSMenuCell.m */; };
 		65E965A618EFAD04000877C4 /* MSMenuTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */; };
 		65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A818F04558000877C4 /* YelpTruckViewController.m */; };
+		EB177A0618F048DB00026E09 /* LocationMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A0418F048DB00026E09 /* LocationMapCell.m */; };
+		EB177A0718F048DB00026E09 /* LocationMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB177A0518F048DB00026E09 /* LocationMapCell.xib */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 		EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5418EF8A3400770C4B /* TruckFormViewController.m */; };
@@ -110,6 +112,9 @@
 		65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuTableViewHeader.m; sourceTree = "<group>"; };
 		65E965A718F04558000877C4 /* YelpTruckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpTruckViewController.h; sourceTree = "<group>"; };
 		65E965A818F04558000877C4 /* YelpTruckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpTruckViewController.m; sourceTree = "<group>"; };
+		EB177A0318F048DB00026E09 /* LocationMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMapCell.h; sourceTree = "<group>"; };
+		EB177A0418F048DB00026E09 /* LocationMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMapCell.m; sourceTree = "<group>"; };
+		EB177A0518F048DB00026E09 /* LocationMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationMapCell.xib; sourceTree = "<group>"; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -311,6 +316,9 @@
 				65E965A218EFAD04000877C4 /* MSMenuCell.m */,
 				65E965A318EFAD04000877C4 /* MSMenuTableViewHeader.h */,
 				65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */,
+				EB177A0318F048DB00026E09 /* LocationMapCell.h */,
+				EB177A0418F048DB00026E09 /* LocationMapCell.m */,
+				EB177A0518F048DB00026E09 /* LocationMapCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -422,6 +430,7 @@
 				65606B0C18EB3437007954BB /* Images.xcassets in Resources */,
 				65606B0418EB3437007954BB /* Main_iPhone.storyboard in Resources */,
 				65606AFB18EB3437007954BB /* InfoPlist.strings in Resources */,
+				EB177A0718F048DB00026E09 /* LocationMapCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +485,7 @@
 				EB624E5D18EF90A500770C4B /* TrucksViewController.m in Sources */,
 				65E965A618EFAD04000877C4 /* MSMenuTableViewHeader.m in Sources */,
 				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
+				EB177A0618F048DB00026E09 /* LocationMapCell.m in Sources */,
 				65E9659E18EF9FBE000877C4 /* TruckSingleton.m in Sources */,
 				65606B0A18EB3437007954BB /* RootViewController.m in Sources */,
 				65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */,

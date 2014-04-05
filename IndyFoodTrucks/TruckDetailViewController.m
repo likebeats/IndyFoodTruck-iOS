@@ -9,6 +9,8 @@
 #import "TruckDetailViewController.h"
 #import "TruckFormViewController.h"
 #import "CCActionSheet.h"
+#import "UIImageView+AFNetworking.h"
+#import "LocationMapCell.h"
 
 @interface TruckDetailViewController () <UITableViewDelegate>
 
@@ -86,26 +88,37 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0)
+        return 150;
     return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TruckDetailCell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-    }
-    
     if (indexPath.section == 0) {
         
-        cell.textLabel.text = @"";
-        cell.detailTextLabel.text = @"";
+        static NSString *CellIdentifier = @"LocationMapCell";
+        LocationMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            [self.tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
+            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        }
         
-        UIImageView *mapImageView = [UIImageView alloc]
+        NSString *mapURL = @"http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=11&size=320x150&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false";
+        
+        [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
+                           placeholderImage:nil];
+        
+        return cell;
         
     } else if (indexPath.section == 1) {
+        
+        static NSString *CellIdentifier = @"TruckDetailCell";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+        }
         
         if (indexPath.row == 0) {
             cell.textLabel.text = @"Name";
@@ -128,9 +141,11 @@
             cell.detailTextLabel.text = self.truck.truckWebsite;
             
         }
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
 }
 
 #pragma mark -
