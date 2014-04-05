@@ -36,6 +36,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"Future Locations";
+    
     futureLocations = [NSMutableArray arrayWithArray:locations];
     [futureLocations removeObjectAtIndex:[locations indexOfObject:currentLocationObject]];
 }

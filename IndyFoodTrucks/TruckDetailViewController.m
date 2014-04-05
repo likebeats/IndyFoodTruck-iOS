@@ -58,6 +58,18 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             locations = [objects mutableCopy];
+            
+            [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
+                NSDate *fromTime = [location objectForKey:@"fromTime"];
+                NSDate *toTime = [location objectForKey:@"toTime"];
+                
+                if (([[NSDate date] compare:fromTime] == NSOrderedDescending) &&
+                    ([[NSDate date] compare:toTime] == NSOrderedAscending)) {
+                    currentLocationObject = location;
+                    *stop = YES;
+                }
+            }];
+            
             [self.tableView reloadData];
         }
     }];
@@ -99,120 +111,139 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    if (currentLocationObject || locations.count > 0) return 2;
+    return 1;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)index
 {
-    if (index == 0) return @"Current Location";
+    if (index == 0 && currentLocationObject) return @"Current Location";
+    if (index == 0 && locations.count > 0) return @" ";
     return @"Truck Information";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)index
 {
-    if (index == 0) return 2;
+    if (index == 0 && locations.count > 1) return 2;
+    if (index == 0 && locations.count > 0) return 1;
     return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 0)
-        return 150;
+    if (indexPath.section == 0 && indexPath.row == 0 && currentLocationObject) return 150;
     return 50;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        
-        if (indexPath.row == 0) {
+    if (currentLocationObject || locations.count > 0) {
+        if (indexPath.section == 0) {
             
-            static NSString *CellIdentifier = @"LocationMapCell";
-            LocationMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                [self.tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
-                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            }
-            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
-            [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
-                NSDate *fromTime = [location objectForKey:@"fromTime"];
-                NSDate *toTime = [location objectForKey:@"toTime"];
+            if (indexPath.row == 0 && currentLocationObject) {
                 
-                if (([[NSDate date] compare:fromTime] == NSOrderedDescending) &&
-                    ([[NSDate date] compare:toTime] == NSOrderedAscending)) {
-                    currentLocationObject = location;
-                    *stop = YES;
-                }
-            }];
-            
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"MMM d h:mm a"];
-            
-            PFGeoPoint *currentLocationGeoPoint = [currentLocationObject objectForKey:@"truckLocation"];
-            NSDate *currentFromTime = [currentLocationObject objectForKey:@"fromTime"];
-            NSDate *currentToTime = [currentLocationObject objectForKey:@"toTime"];
-            
-            NSString *string = @"%7C";
-            NSString *mapURL = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=14&size=320x150&maptype=roadmap&markers=color:green%@%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, string, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
-            [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
-                               placeholderImage:nil];
-            [cell.mapCaptionLabel setText:[NSString stringWithFormat:@"%@ to %@", [dateFormat stringFromDate:currentFromTime], [dateFormat stringFromDate:currentToTime]]];
-            
-            return cell;
-            
-        } else if (indexPath.row == 1) {
-            
-            static NSString *CellIdentifier = @"TruckDetailCell";
-            
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+                return [self currentLocationCell];
+                
+            } else if (indexPath.row == 1 && currentLocationObject) {
+                
+                return [self futureLocationsCell];
             }
             
-            cell.textLabel.text = @"Future Locations";
+            if (index == 0 && locations.count > 0) {
+                
+                return [self futureLocationsCell];
+                
+            }
             
-            return cell;
-        }
-        
-        return nil;
-        
-    } else if (indexPath.section == 1) {
-        
-        static NSString *CellIdentifier = @"TruckDetailCell";
-        
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-        }
-        
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Name";
-            cell.detailTextLabel.text = self.truck.truckName;
+            return nil;
             
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"Description";
-            cell.detailTextLabel.text = self.truck.truckInfo;
+        } else if (indexPath.section == 1) {
             
-        } else if (indexPath.row == 2) {
-            cell.textLabel.text = @"Menu URL";
-            cell.detailTextLabel.text = self.truck.truckMenuURL;
-            
-        } else if (indexPath.row == 3) {
-            cell.textLabel.text = @"Phone";
-            cell.detailTextLabel.text = self.truck.truckPhone;
-            
-        } else if (indexPath.row == 4) {
-            cell.textLabel.text = @"Website";
-            cell.detailTextLabel.text = self.truck.truckWebsite;
+            return [self truckDetailsCell:indexPath];
             
         }
+    } else {
         
-        return cell;
+        return [self truckDetailsCell:indexPath];
+        
     }
     
     return nil;
+}
+
+- (LocationMapCell *)currentLocationCell
+{
+    static NSString *CellIdentifier = @"LocationMapCell";
+    LocationMapCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        [self.tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
+        cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"MMM d h:mm a"];
+    
+    PFGeoPoint *currentLocationGeoPoint = [currentLocationObject objectForKey:@"truckLocation"];
+    NSDate *currentFromTime = [currentLocationObject objectForKey:@"fromTime"];
+    NSDate *currentToTime = [currentLocationObject objectForKey:@"toTime"];
+    
+    NSString *string = @"%7C";
+    NSString *mapURL = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=14&size=320x150&maptype=roadmap&markers=color:green%@%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, string, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
+    [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
+                      placeholderImage:nil];
+    [cell.mapCaptionLabel setText:[NSString stringWithFormat:@"%@ to %@", [dateFormat stringFromDate:currentFromTime], [dateFormat stringFromDate:currentToTime]]];
+    
+    return cell;
+}
+
+- (UITableViewCell *)futureLocationsCell
+{
+    static NSString *CellIdentifier = @"TruckDetailCell";
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.textLabel.text = @"Future Locations";
+    
+    return cell;
+}
+
+- (UITableViewCell *)truckDetailsCell:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"TruckDetailCell";
+    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+    }
+    
+    if (indexPath.row == 0) {
+        cell.textLabel.text = @"Name";
+        cell.detailTextLabel.text = self.truck.truckName;
+        
+    } else if (indexPath.row == 1) {
+        cell.textLabel.text = @"Description";
+        cell.detailTextLabel.text = self.truck.truckInfo;
+        
+    } else if (indexPath.row == 2) {
+        cell.textLabel.text = @"Menu URL";
+        cell.detailTextLabel.text = self.truck.truckMenuURL;
+        
+    } else if (indexPath.row == 3) {
+        cell.textLabel.text = @"Phone";
+        cell.detailTextLabel.text = self.truck.truckPhone;
+        
+    } else if (indexPath.row == 4) {
+        cell.textLabel.text = @"Website";
+        cell.detailTextLabel.text = self.truck.truckWebsite;
+        
+    }
+    
+    return cell;
 }
 
 #pragma mark -
