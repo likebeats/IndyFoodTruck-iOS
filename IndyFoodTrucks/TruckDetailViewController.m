@@ -57,7 +57,7 @@
     [query whereKey:@"truck" equalTo:[PFObject objectWithoutDataWithClassName:@"Trucks" objectId:self.truck.truckId]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            locations = [objects mutableCopy];
+            locations = [[NSMutableArray alloc] initWithArray:[[objects reverseObjectEnumerator] allObjects]];
             [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
                 NSDate *fromTime = [location objectForKey:@"fromTime"];
                 NSDate *toTime = [location objectForKey:@"toTime"];
