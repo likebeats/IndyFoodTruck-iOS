@@ -13,6 +13,9 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    
+    [self.truckImageView.layer setCornerRadius:10];
+    [self.truckImageView.layer setMasksToBounds:YES];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
