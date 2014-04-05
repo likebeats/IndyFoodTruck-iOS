@@ -48,6 +48,7 @@
 		65E965FE18F0494F000877C4 /* YLLocalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965F818F0494F000877C4 /* YLLocalSearch.m */; };
 		65E965FF18F0494F000877C4 /* YLLocalSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965FA18F0494F000877C4 /* YLLocalSearchResponse.m */; };
 		65E9660218F086EB000877C4 /* MyCustomAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9660118F086EB000877C4 /* MyCustomAnnotation.m */; };
+		65E9660518F0A470000877C4 /* WebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9660418F0A470000877C4 /* WebviewViewController.m */; };
 		EB177A0618F048DB00026E09 /* LocationMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A0418F048DB00026E09 /* LocationMapCell.m */; };
 		EB177A0718F048DB00026E09 /* LocationMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB177A0518F048DB00026E09 /* LocationMapCell.xib */; };
 		EB177A0818F04D2C00026E09 /* YLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965F618F0494F000877C4 /* YLClient.m */; };
@@ -136,6 +137,8 @@
 		65E965FA18F0494F000877C4 /* YLLocalSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLLocalSearchResponse.m; path = IndyFoodTrucks/YElp/YLLocalSearchResponse.m; sourceTree = SOURCE_ROOT; };
 		65E9660018F086EB000877C4 /* MyCustomAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomAnnotation.h; sourceTree = "<group>"; };
 		65E9660118F086EB000877C4 /* MyCustomAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomAnnotation.m; sourceTree = "<group>"; };
+		65E9660318F0A470000877C4 /* WebviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebviewViewController.h; sourceTree = "<group>"; };
+		65E9660418F0A470000877C4 /* WebviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebviewViewController.m; sourceTree = "<group>"; };
 		EB177A0318F048DB00026E09 /* LocationMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMapCell.h; sourceTree = "<group>"; };
 		EB177A0418F048DB00026E09 /* LocationMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMapCell.m; sourceTree = "<group>"; };
 		EB177A0518F048DB00026E09 /* LocationMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationMapCell.xib; sourceTree = "<group>"; };
@@ -313,6 +316,8 @@
 				EB624DF218EF5F0C00770C4B /* MenuViewController.m */,
 				EB624DF418EF61E300770C4B /* MapViewController.h */,
 				EB624DF518EF61E300770C4B /* MapViewController.m */,
+				65E9660318F0A470000877C4 /* WebviewViewController.h */,
+				65E9660418F0A470000877C4 /* WebviewViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -555,6 +560,7 @@
 			files = (
 				EB624E5D18EF90A500770C4B /* TrucksViewController.m in Sources */,
 				EB177A1618F05FAD00026E09 /* TruckManualCheckInViewController.m in Sources */,
+				65E9660518F0A470000877C4 /* WebviewViewController.m in Sources */,
 				EB177A1C18F0661500026E09 /* AutomaticCheckInForm.m in Sources */,
 				65E965A618EFAD04000877C4 /* MSMenuTableViewHeader.m in Sources */,
 				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
