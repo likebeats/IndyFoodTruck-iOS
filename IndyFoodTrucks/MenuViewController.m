@@ -75,7 +75,6 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
             cell.textLabel.text = [dateFormat stringFromDate:selectedDate];
         }
         
-        
     } else if (indexPath.section == 1) {
         
         NSInteger selectedTime = [TruckSingleton singleton].selectedTime;

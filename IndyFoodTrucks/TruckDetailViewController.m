@@ -256,13 +256,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0 && indexPath.row == 1) {
-        
-        TruckFutureLocationsViewController *truckFutureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckFutureLocationsViewController"];
-        truckFutureViewController.locations = locations;
-        truckFutureViewController.currentLocationObject = currentLocationObject;
-        [self.navigationController pushViewController:truckFutureViewController animated:YES];
-        
+    if (locations.count > 1) {
+        if (indexPath.section == 0 && indexPath.row == 1) {
+            
+            TruckFutureLocationsViewController *truckFutureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckFutureLocationsViewController"];
+            truckFutureViewController.locations = locations;
+            truckFutureViewController.currentLocationObject = currentLocationObject;
+            [self.navigationController pushViewController:truckFutureViewController animated:YES];
+            
+        }
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
