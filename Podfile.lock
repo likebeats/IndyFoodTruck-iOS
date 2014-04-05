@@ -1,5 +1,7 @@
 PODS:
   - AFNetworking (1.3.3)
+  - AFOAuth1Client (0.3.3):
+    - AFNetworking (~> 1.3)
   - FXForms (1.1.1)
   - HexColors (2.2.1)
   - MSDynamicsDrawerViewController (1.5.1)
@@ -8,12 +10,14 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 1.3.3)
+  - AFOAuth1Client
   - FXForms (~> 1.1.1)
   - MSDynamicsDrawerViewController (~> 1.5.1)
   - TSMessages
 
 SPEC CHECKSUMS:
   AFNetworking: 61fdd49e2ffe6380378df37b3b6e70630bb9dd66
+  AFOAuth1Client: 8b06e54087732068e19c4efcd7bed5d74bc9538a
   FXForms: 851f7fd1f554d96643ddc523478b955f44e9df98
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   MSDynamicsDrawerViewController: 2409ca61449d8541a3ee640bfd2d230c3734d3c4
