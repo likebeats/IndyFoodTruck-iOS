@@ -9,6 +9,7 @@
 #import "MapViewController.h"
 #import "TruckDetailViewController.h"
 #import "MyCustomAnnotation.h"
+#import "TruckSingleton.h"
 
 @interface MapViewController (){
     CLLocationManager *locationManager;
@@ -36,58 +37,7 @@
     
     self.title = @"#IndyFoodTrucks";
 
-    //[self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"] animated:NO];
-    
-    TruckForm *truckForm = [[TruckForm alloc] init];
-    truckForm.truckName = @"Truck Name";
-    
-    TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
-    truckDetailViewController.truck = truckForm;
-    
-  
-    PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
-   // [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            
-            [objects enumerateObjectsUsingBlock:^(PFObject *pfTruck, NSUInteger idx, BOOL *stop) {
-                
-                PFObject *truckObject = (PFObject*)pfTruck[@"truck"];
-                [truckObject fetchIfNeeded];
-                
-                TruckForm *theTruck = [TruckForm new];
-                theTruck.truckId = truckObject.objectId;
-                if (truckObject[@"truckAvatarURL"]) theTruck.truckAvatarURL = truckObject[@"truckAvatarURL"];
-                if (truckObject[@"truckInfo"]) theTruck.truckInfo = truckObject[@"truckInfo"];
-                if (truckObject[@"truckMenuURL"]) theTruck.truckMenuURL = truckObject[@"truckMenuURL"];
-                if (truckObject[@"truckName"]) theTruck.truckName = truckObject[@"truckName"];
-                if (truckObject[@"truckPhone"]) theTruck.truckPhone = truckObject[@"truckPhone"];
-                if (truckObject[@"truckTwitter"]) theTruck.truckTwitter = truckObject[@"truckTwitter"];
-                if (truckObject[@"truckTwitterId"]) theTruck.truckTwitterId = truckObject[@"truckTwitterId"];
-                if (truckObject[@"truckWebsite"]) theTruck.truckWebsite = truckObject[@"truckWebsite"];
-                
-                MyCustomAnnotation *myCustomAnnotation = [[MyCustomAnnotation alloc] initWithTruck:theTruck];
-                
-                PFGeoPoint *currentLocationGeoPoint = pfTruck[@"truckLocation"];
-                
-                myCustomAnnotation.coordinate = CLLocationCoordinate2DMake(currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude) ;
-        
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [annotations addObject:myCustomAnnotation];
-                    [self.mapview addAnnotation:myCustomAnnotation];
-                });
-                
-                
-            }];
-
-            NSLog(@"Successfully retrieved %lu trucks.", (unsigned long)objects.count);
-           // [self.theTableview reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    [self fetchTrucks:nil];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
@@ -104,6 +54,71 @@
        // [self.mapview setCenterCoordinate:self.mapview.userLocation.coordinate animated:YES];
     });
 }
+
+-(void) fetchTrucks: (NSNotification *)note {
+    [self.mapview removeAnnotations:annotations];
+    [annotations removeAllObjects];
+    PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
+    // [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            [objects enumerateObjectsUsingBlock:^(PFObject *pfTruck, NSUInteger idx, BOOL *stop) {
+                NSDate *selectedDate = [TruckSingleton singleton].selectedDate;
+                
+                if (selectedDate){
+                    NSDate *fromTime = [pfTruck objectForKey:@"fromTime"];
+                    NSDate *toTime = [pfTruck objectForKey:@"toTime"];
+                    
+                    if (([selectedDate compare:fromTime] == NSOrderedDescending) &&
+                        ([selectedDate compare:toTime] == NSOrderedAscending)) {
+                        [self addAnnotation:pfTruck];
+                    }
+                }else{
+                    [self addAnnotation:pfTruck];
+                }
+                
+                
+                
+            }];
+            
+            NSLog(@"Successfully retrieved %lu trucks.", (unsigned long)objects.count);
+            // [self.theTableview reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+}
+
+-(void) addAnnotation: (PFObject *)pfTruck {
+    PFObject *truckObject = (PFObject*)pfTruck[@"truck"];
+    [truckObject fetchIfNeeded];
+    
+    TruckForm *theTruck = [TruckForm new];
+    theTruck.truckId = truckObject.objectId;
+    if (truckObject[@"truckAvatarURL"]) theTruck.truckAvatarURL = truckObject[@"truckAvatarURL"];
+    if (truckObject[@"truckInfo"]) theTruck.truckInfo = truckObject[@"truckInfo"];
+    if (truckObject[@"truckMenuURL"]) theTruck.truckMenuURL = truckObject[@"truckMenuURL"];
+    if (truckObject[@"truckName"]) theTruck.truckName = truckObject[@"truckName"];
+    if (truckObject[@"truckPhone"]) theTruck.truckPhone = truckObject[@"truckPhone"];
+    if (truckObject[@"truckTwitter"]) theTruck.truckTwitter = truckObject[@"truckTwitter"];
+    if (truckObject[@"truckTwitterId"]) theTruck.truckTwitterId = truckObject[@"truckTwitterId"];
+    if (truckObject[@"truckWebsite"]) theTruck.truckWebsite = truckObject[@"truckWebsite"];
+    
+    MyCustomAnnotation *myCustomAnnotation = [[MyCustomAnnotation alloc] initWithTruck:theTruck];
+    
+    PFGeoPoint *currentLocationGeoPoint = pfTruck[@"truckLocation"];
+    
+    myCustomAnnotation.coordinate = CLLocationCoordinate2DMake(currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude) ;
+    
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [annotations addObject:myCustomAnnotation];
+        [self.mapview addAnnotation:myCustomAnnotation];
+    });
+}
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
