@@ -12,6 +12,7 @@
 #import <Twitter/Twitter.h>
 #import "CCActionSheet.h"
 #import <Parse/Parse.h>
+#import "TrucksViewController.h"
 
 @interface TruckLoginViewController () {
     ACAccount *twitterAccount;
@@ -127,12 +128,18 @@
                   options:NSJSONReadingAllowFragments error:&jsonError];
                  if (timelineData) {
                      userInfo = timelineData;
-                     [self fetchTrucks];
+                     
+                     dispatch_sync(dispatch_get_main_queue(), ^{
+                         [self fetchTrucks];
+                     });
+                     
                      NSLog(@"Timeline Response: %@\n", timelineData);
                  }
                  else {
                      // Our JSON deserialization went awry
+                     dispatch_sync(dispatch_get_main_queue(), ^{
                      [[[UIAlertView alloc] initWithTitle:@"Twitter Login Failed" message:@"Twitter login failed. Please try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+                     });
                      NSLog(@"JSON Error: %@", [jsonError localizedDescription]);
                  }
              }
@@ -140,7 +147,9 @@
                  // The server did not respond ... were we rate-limited?
                  NSLog(@"The response status code is %ld",
                        (long)urlResponse.statusCode);
+                 dispatch_sync(dispatch_get_main_queue(), ^{
                  [[[UIAlertView alloc] initWithTitle:@"Twitter Login Failed" message:@"Twitter login failed. Please try again later." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil] show];
+                 });
              }
          }
      }];
@@ -149,27 +158,14 @@
 }
 
 -(void) fetchTrucks  {
+    [TruckSingleton singleton].twitterAccount = twitterAccount;
+    [TruckSingleton singleton].twitterUserInfo = userInfo;
     
     //Load Trucks Controller
     
-    
-//    NSString *userId = [[twitterAccount valueForKey:@"properties"] valueForKey:@"user_id"];
-//    
-//    PFQuery *query = [PFQuery queryWithClassName:@"Trucks"];
-//    [query whereKey:@"truckTwitterId" equalTo:userId];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        if (!error) {
-//            // The find succeeded.
-//            NSLog(@"Successfully retrieved %lu scores.", (unsigned long)objects.count);
-//            // Do something with the found objects
-//            for (PFObject *object in objects) {
-//                NSLog(@"%@", object.objectId);
-//            }
-//        } else {
-//            // Log details of the failure
-//            NSLog(@"Error: %@ %@", error, [error userInfo]);
-//        }
-//    }];
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Main_iPhone"bundle:nil];
+    TrucksViewController *trucksViewController = [storyboard instantiateViewControllerWithIdentifier:@"TrucksViewController"];
+    [self.navigationController pushViewController:trucksViewController animated:YES];
 }
 
 /*

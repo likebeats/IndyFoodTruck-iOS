@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TruckSingleton.h"
 
 @interface TrucksViewController : UIViewController
+
+@property (nonatomic, strong) IBOutlet UITableView *theTableview;
 
 @end
