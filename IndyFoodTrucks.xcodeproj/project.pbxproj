@@ -42,6 +42,7 @@
 		65E9659E18EF9FBE000877C4 /* TruckSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9659D18EF9FBE000877C4 /* TruckSingleton.m */; };
 		65E965A518EFAD04000877C4 /* MSMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A218EFAD04000877C4 /* MSMenuCell.m */; };
 		65E965A618EFAD04000877C4 /* MSMenuTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */; };
+		65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A818F04558000877C4 /* YelpTruckViewController.m */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 		EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5418EF8A3400770C4B /* TruckFormViewController.m */; };
@@ -107,6 +108,8 @@
 		65E965A218EFAD04000877C4 /* MSMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuCell.m; sourceTree = "<group>"; };
 		65E965A318EFAD04000877C4 /* MSMenuTableViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSMenuTableViewHeader.h; sourceTree = "<group>"; };
 		65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuTableViewHeader.m; sourceTree = "<group>"; };
+		65E965A718F04558000877C4 /* YelpTruckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpTruckViewController.h; sourceTree = "<group>"; };
+		65E965A818F04558000877C4 /* YelpTruckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpTruckViewController.m; sourceTree = "<group>"; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -324,14 +327,16 @@
 		EB624E5A18EF908800770C4B /* Trucks Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				65E9659218EF9DE7000877C4 /* TruckLoginViewController.h */,
-				65E9659318EF9DE7000877C4 /* TruckLoginViewController.m */,
 				EB624E5B18EF90A500770C4B /* TrucksViewController.h */,
 				EB624E5C18EF90A500770C4B /* TrucksViewController.m */,
+				65E965A718F04558000877C4 /* YelpTruckViewController.h */,
+				65E965A818F04558000877C4 /* YelpTruckViewController.m */,
 				EB624E5E18EF914700770C4B /* TruckDetailViewController.h */,
 				EB624E5F18EF914700770C4B /* TruckDetailViewController.m */,
 				EB624E5318EF8A3400770C4B /* TruckFormViewController.h */,
 				EB624E5418EF8A3400770C4B /* TruckFormViewController.m */,
+				65E9659218EF9DE7000877C4 /* TruckLoginViewController.h */,
+				65E9659318EF9DE7000877C4 /* TruckLoginViewController.m */,
 			);
 			name = "Trucks Controllers";
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
 				65E9659E18EF9FBE000877C4 /* TruckSingleton.m in Sources */,
 				65606B0A18EB3437007954BB /* RootViewController.m in Sources */,
+				65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */,
 				EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */,
 				EB624E5918EF8AE900770C4B /* TruckForm.m in Sources */,
 				65E9659918EF9E27000877C4 /* CCActionSheet.m in Sources */,

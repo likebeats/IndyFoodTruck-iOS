@@ -40,7 +40,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     
     [self.tableView registerClass:[MSMenuCell class] forCellReuseIdentifier:MSMenuCellReuseIdentifier];
     [self.tableView registerClass:[MSMenuTableViewHeader class] forHeaderFooterViewReuseIdentifier:MSDrawerHeaderReuseIdentifier];
-    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor blueColor];
     self.tableView.separatorColor = [UIColor colorWithWhite:1.0 alpha:0.25];
 }
 
