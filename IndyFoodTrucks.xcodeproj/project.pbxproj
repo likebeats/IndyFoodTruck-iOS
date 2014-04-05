@@ -43,8 +43,13 @@
 		65E965A518EFAD04000877C4 /* MSMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A218EFAD04000877C4 /* MSMenuCell.m */; };
 		65E965A618EFAD04000877C4 /* MSMenuTableViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */; };
 		65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965A818F04558000877C4 /* YelpTruckViewController.m */; };
+		65E965FB18F0494F000877C4 /* YelpKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65E965F218F0494F000877C4 /* YelpKeys.plist */; };
+		65E965FC18F0494F000877C4 /* YLBusiness.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965F418F0494F000877C4 /* YLBusiness.m */; };
+		65E965FE18F0494F000877C4 /* YLLocalSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965F818F0494F000877C4 /* YLLocalSearch.m */; };
+		65E965FF18F0494F000877C4 /* YLLocalSearchResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965FA18F0494F000877C4 /* YLLocalSearchResponse.m */; };
 		EB177A0618F048DB00026E09 /* LocationMapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A0418F048DB00026E09 /* LocationMapCell.m */; };
 		EB177A0718F048DB00026E09 /* LocationMapCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB177A0518F048DB00026E09 /* LocationMapCell.xib */; };
+		EB177A0818F04D2C00026E09 /* YLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965F618F0494F000877C4 /* YLClient.m */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 		EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5418EF8A3400770C4B /* TruckFormViewController.m */; };
@@ -112,6 +117,15 @@
 		65E965A418EFAD04000877C4 /* MSMenuTableViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSMenuTableViewHeader.m; sourceTree = "<group>"; };
 		65E965A718F04558000877C4 /* YelpTruckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpTruckViewController.h; sourceTree = "<group>"; };
 		65E965A818F04558000877C4 /* YelpTruckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpTruckViewController.m; sourceTree = "<group>"; };
+		65E965F218F0494F000877C4 /* YelpKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = YelpKeys.plist; path = IndyFoodTrucks/YElp/YelpKeys.plist; sourceTree = SOURCE_ROOT; };
+		65E965F318F0494F000877C4 /* YLBusiness.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLBusiness.h; path = IndyFoodTrucks/YElp/YLBusiness.h; sourceTree = SOURCE_ROOT; };
+		65E965F418F0494F000877C4 /* YLBusiness.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLBusiness.m; path = IndyFoodTrucks/YElp/YLBusiness.m; sourceTree = SOURCE_ROOT; };
+		65E965F518F0494F000877C4 /* YLClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLClient.h; path = IndyFoodTrucks/YElp/YLClient.h; sourceTree = SOURCE_ROOT; };
+		65E965F618F0494F000877C4 /* YLClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLClient.m; path = IndyFoodTrucks/YElp/YLClient.m; sourceTree = SOURCE_ROOT; };
+		65E965F718F0494F000877C4 /* YLLocalSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLLocalSearch.h; path = IndyFoodTrucks/YElp/YLLocalSearch.h; sourceTree = SOURCE_ROOT; };
+		65E965F818F0494F000877C4 /* YLLocalSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLLocalSearch.m; path = IndyFoodTrucks/YElp/YLLocalSearch.m; sourceTree = SOURCE_ROOT; };
+		65E965F918F0494F000877C4 /* YLLocalSearchResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YLLocalSearchResponse.h; path = IndyFoodTrucks/YElp/YLLocalSearchResponse.h; sourceTree = SOURCE_ROOT; };
+		65E965FA18F0494F000877C4 /* YLLocalSearchResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YLLocalSearchResponse.m; path = IndyFoodTrucks/YElp/YLLocalSearchResponse.m; sourceTree = SOURCE_ROOT; };
 		EB177A0318F048DB00026E09 /* LocationMapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationMapCell.h; sourceTree = "<group>"; };
 		EB177A0418F048DB00026E09 /* LocationMapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationMapCell.m; sourceTree = "<group>"; };
 		EB177A0518F048DB00026E09 /* LocationMapCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationMapCell.xib; sourceTree = "<group>"; };
@@ -521,7 +535,7 @@
 				65E9659418EF9DE7000877C4 /* TruckLoginViewController.m in Sources */,
 				EB624E6018EF914700770C4B /* TruckDetailViewController.m in Sources */,
 				65E965FF18F0494F000877C4 /* YLLocalSearchResponse.m in Sources */,
-				65E965FD18F0494F000877C4 /* YLClient.m in Sources */,
+				EB177A0818F04D2C00026E09 /* YLClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
