@@ -36,8 +36,10 @@
     self.formController.delegate = self;
     
     if (self.editTruckForm) {
+        self.title = @"Edit Truck";
         self.formController.form = self.editTruckForm;
     } else {
+        self.title = @"Add Truck";
         self.formController.form = [[TruckForm alloc] init];
     }
 }
