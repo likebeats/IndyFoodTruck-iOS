@@ -8,8 +8,12 @@
 
 #import "MapViewController.h"
 #import "TruckDetailViewController.h"
+#import "MyCustomAnnotation.h"
 
-@interface MapViewController ()
+@interface MapViewController (){
+    CLLocationManager *locationManager;
+    NSMutableArray *annotations;
+}
 
 @end
 
@@ -40,7 +44,43 @@
     TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
     truckDetailViewController.truck = truckForm;
     
-  //  [self.navigationController pushViewController:truckDetailViewController animated:NO];
+  
+    PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
+   // [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            [objects enumerateObjectsUsingBlock:^(PFObject *pfTruck, NSUInteger idx, BOOL *stop) {
+                
+                PFObject *truckObject = (PFObject*)pfTruck[@"truck"];
+                [truckObject fetchIfNeeded];
+                
+                TruckForm *theTruck = [TruckForm new];
+                theTruck.truckId = pfTruck.objectId;
+                if (truckObject[@"truckAvatarURL"]) theTruck.truckAvatarURL = truckObject[@"truckAvatarURL"];
+                if (truckObject[@"truckInfo"]) theTruck.truckInfo = truckObject[@"truckInfo"];
+                if (truckObject[@"truckMenuURL"]) theTruck.truckMenuURL = truckObject[@"truckMenuURL"];
+                if (truckObject[@"truckName"]) theTruck.truckName = truckObject[@"truckName"];
+                if (truckObject[@"truckPhone"]) theTruck.truckPhone = truckObject[@"truckPhone"];
+                if (truckObject[@"truckTwitter"]) theTruck.truckTwitter = truckObject[@"truckTwitter"];
+                if (truckObject[@"truckTwitterId"]) theTruck.truckTwitterId = truckObject[@"truckTwitterId"];
+                if (truckObject[@"truckWebsite"]) theTruck.truckWebsite = truckObject[@"truckWebsite"];
+                
+                MyCustomAnnotation *myCustomAnnotation = [[MyCustomAnnotation alloc] initWithTruck:theTruck];
+                
+             //   myCustomAnnotation.coordinate = location.locationCoords;
+                [annotations addObject:myCustomAnnotation];
+                [self.mapview addAnnotation:myCustomAnnotation];
+                
+            }];
+
+            NSLog(@"Successfully retrieved %lu trucks.", (unsigned long)objects.count);
+           // [self.theTableview reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -7,7 +7,10 @@
 //
 
 @interface MapViewController : UIViewController
+#import <MapKit/MapKit.h>
 
 @property (nonatomic, weak) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
+
+@property (nonatomic, strong) IBOutlet MKMapView *mapview;
 
 @end
