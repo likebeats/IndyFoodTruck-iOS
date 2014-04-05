@@ -13,10 +13,12 @@
 #import "LocationMapCell.h"
 #import "TruckManualCheckInViewController.h"
 #import "TruckAutomaticCheckInViewController.h"
+#import "TruckFutureLocationsViewController.h"
 
 @interface TruckDetailViewController () <UITableViewDelegate>
 {
     NSMutableArray *locations;
+    PFObject *currentLocationObject;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -109,13 +111,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)index
 {
-    if (index == 0) return 1;
+    if (index == 0) return 2;
     return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == 0 && indexPath.row == 0)
         return 150;
     return 50;
 }
@@ -124,34 +126,58 @@
 {
     if (indexPath.section == 0) {
         
-        static NSString *CellIdentifier = @"LocationMapCell";
-        LocationMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            [self.tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
-            cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (indexPath.row == 0) {
+            
+            static NSString *CellIdentifier = @"LocationMapCell";
+            LocationMapCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                [self.tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
+                cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            }
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+            [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
+                NSDate *fromTime = [location objectForKey:@"fromTime"];
+                NSDate *toTime = [location objectForKey:@"toTime"];
+                
+                if (([[NSDate date] compare:fromTime] == NSOrderedDescending) &&
+                    ([[NSDate date] compare:toTime] == NSOrderedAscending)) {
+                    currentLocationObject = location;
+                    *stop = YES;
+                }
+            }];
+            
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"MMM d h:mm a"];
+            
+            PFGeoPoint *currentLocationGeoPoint = [currentLocationObject objectForKey:@"truckLocation"];
+            NSDate *currentFromTime = [currentLocationObject objectForKey:@"fromTime"];
+            NSDate *currentToTime = [currentLocationObject objectForKey:@"toTime"];
+            
+            NSString *string = @"%7C";
+            NSString *mapURL = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=14&size=320x150&maptype=roadmap&markers=color:green%@%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, string, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
+            [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
+                               placeholderImage:nil];
+            [cell.mapCaptionLabel setText:[NSString stringWithFormat:@"%@ to %@", [dateFormat stringFromDate:currentFromTime], [dateFormat stringFromDate:currentToTime]]];
+            
+            return cell;
+            
+        } else if (indexPath.row == 1) {
+            
+            static NSString *CellIdentifier = @"TruckDetailCell";
+            
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
+            }
+            
+            cell.textLabel.text = @"Future Locations";
+            
+            return cell;
         }
         
-        __block PFGeoPoint *currentLocationGeoPoint;
-        [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
-            NSDate *fromTime = [location objectForKey:@"fromTime"];
-            NSDate *toTime = [location objectForKey:@"toTime"];
-            PFGeoPoint *geoPoint = [location objectForKey:@"truckLocation"];
-            
-            if (([[NSDate date] compare:fromTime] == NSOrderedDescending) &&
-                ([[NSDate date] compare:toTime] == NSOrderedAscending)) {
-                currentLocationGeoPoint = geoPoint;
-                *stop = YES;
-            }
-        }];
-                
-        NSLog(@"%@", currentLocationGeoPoint);
-        NSString *string = @"%7C";
-        NSString *mapURL = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=13&size=320x150&maptype=roadmap&markers=color:green%@%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, string, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
-        NSLog(@"%@", mapURL);
-        [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
-                           placeholderImage:nil];
-        
-        return cell;
+        return nil;
         
     } else if (indexPath.section == 1) {
         
@@ -200,6 +226,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        
+        TruckFutureLocationsViewController *truckFutureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckFutureLocationsViewController"];
+        truckFutureViewController.locations = locations;
+        truckFutureViewController.currentLocationObject = currentLocationObject;
+        [self.navigationController pushViewController:truckFutureViewController animated:YES];
+        
+    }
+    
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

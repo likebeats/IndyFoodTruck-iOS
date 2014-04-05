@@ -11,5 +11,7 @@
 @interface LocationMapCell : UITableViewCell
 
 @property (nonatomic, strong) IBOutlet UIImageView *mapImageView;
+@property (nonatomic, strong) IBOutlet UILabel *mapCaptionLabel;
+@property (nonatomic, strong) IBOutlet UIView *mapCaptionBgView;
 
 @end

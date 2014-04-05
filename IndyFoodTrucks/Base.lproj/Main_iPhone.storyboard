@@ -82,6 +82,38 @@
             </objects>
             <point key="canvasLocation" x="709" y="67"/>
         </scene>
+        <!--Truck Future Locations View Controller-->
+        <scene sceneID="zmU-BM-tNr">
+            <objects>
+                <viewController storyboardIdentifier="TruckFutureLocationsViewController" id="fAm-5T-CtK" customClass="TruckFutureLocationsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bP5-zm-Qxd"/>
+                        <viewControllerLayoutGuide type="bottom" id="1rX-aP-X3D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="FHO-jQ-d8T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="GwP-mW-kxm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="fAm-5T-CtK" id="3Ka-eR-ado"/>
+                                    <outlet property="delegate" destination="fAm-5T-CtK" id="gid-bA-88G"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="GwP-mW-kxm" id="6Vm-lO-gdD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Npk-G0-HdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1271" y="-617"/>
+        </scene>
         <!--Truck Manual Check In View Controller-->
         <scene sceneID="eps-O6-19T">
             <objects>

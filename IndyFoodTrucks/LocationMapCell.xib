@@ -17,15 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
+                    <view alpha="0.74999999999999978" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URJ-u0-w4Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTJ-EM-XKl">
+                        <rect key="frame" x="7" y="6" width="36" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="D05-Ks-pcg" secondAttribute="bottom" id="55i-fn-hvy"/>
+                    <constraint firstItem="aTJ-EM-XKl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="7" id="6fR-f6-SQZ"/>
                     <constraint firstItem="D05-Ks-pcg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="azO-mg-dW5"/>
                     <constraint firstItem="D05-Ks-pcg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="dfb-cx-cWO"/>
+                    <constraint firstItem="aTJ-EM-XKl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="fJU-6W-i2H"/>
                     <constraint firstAttribute="trailing" secondItem="D05-Ks-pcg" secondAttribute="trailing" id="tmE-d8-HNZ"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="mapCaptionBgView" destination="URJ-u0-w4Q" id="tPD-Ac-odJ"/>
+                <outlet property="mapCaptionLabel" destination="aTJ-EM-XKl" id="tfe-kU-jG2"/>
                 <outlet property="mapImageView" destination="D05-Ks-pcg" id="TF0-tc-4n2"/>
             </connections>
         </tableViewCell>
