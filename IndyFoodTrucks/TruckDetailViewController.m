@@ -40,7 +40,7 @@
                                                                 style:UIBarButtonItemStylePlain
                                                                target:self
                                                                action:@selector(onEditBtnClick:)];
-    self.navigationItem.rightBarButtonItem = editBtn;
+    //self.navigationItem.rightBarButtonItem = editBtn;
 }
 
 - (void)onEditBtnClick:(id)sender
@@ -52,7 +52,7 @@
 
 - (IBAction)onCheckBtnClick:(id)sender
 {
-    CCActionSheet *sheet = [[CCActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Check In Method", nil)];
+    CCActionSheet *sheet = [[CCActionSheet alloc] initWithTitle:NSLocalizedString(@"Select check-in method", nil)];
     [sheet addButtonWithTitle:@"Automatic" block:^{
         
     }];
@@ -74,13 +74,14 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)index
 {
-    if (index == 1) return @"Locations";
-    return @" ";
+    if (index == 0) return @"Current Location";
+    return @"Truck Information";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)index
 {
-    return 6;
+    if (index == 0) return 1;
+    return 5;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -90,7 +91,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"TruckDetailCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -99,36 +100,32 @@
     
     if (indexPath.section == 0) {
         
-        if (indexPath.row == 0) {
-            cell.textLabel.text = @"Truck Name";
-            cell.detailTextLabel.text = self.truck.truckName;
-            
-        } else if (indexPath.row == 1) {
-            cell.textLabel.text = @"Truck Info";
-            cell.detailTextLabel.text = self.truck.truckInfo;
-            
-        } else if (indexPath.row == 2) {
-            cell.textLabel.text = @"Truck Menu URL";
-            cell.detailTextLabel.text = self.truck.truckMenuURL;
-            
-        } else if (indexPath.row == 3) {
-            cell.textLabel.text = @"Truck Phone";
-            cell.detailTextLabel.text = self.truck.truckPhone;
-            
-        } else if (indexPath.row == 4) {
-            cell.textLabel.text = @"Truck Twitter";
-            cell.detailTextLabel.text = self.truck.truckTwitter;
-            
-        } else if (indexPath.row == 5) {
-            cell.textLabel.text = @"Truck Website";
-            cell.detailTextLabel.text = self.truck.truckWebsite;
-            
-        }
+        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"";
         
     } else if (indexPath.section == 1) {
         
-        cell.textLabel.text = @"";
-        cell.detailTextLabel.text = @"";
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"Name";
+            cell.detailTextLabel.text = self.truck.truckName;
+            
+        } else if (indexPath.row == 1) {
+            cell.textLabel.text = @"Description";
+            cell.detailTextLabel.text = self.truck.truckInfo;
+            
+        } else if (indexPath.row == 2) {
+            cell.textLabel.text = @"Menu URL";
+            cell.detailTextLabel.text = self.truck.truckMenuURL;
+            
+        } else if (indexPath.row == 3) {
+            cell.textLabel.text = @"Phone";
+            cell.detailTextLabel.text = self.truck.truckPhone;
+            
+        } else if (indexPath.row == 4) {
+            cell.textLabel.text = @"Website";
+            cell.detailTextLabel.text = self.truck.truckWebsite;
+            
+        }
     }
     
     return cell;
