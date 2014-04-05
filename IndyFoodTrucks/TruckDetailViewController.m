@@ -52,7 +52,7 @@
 
 - (IBAction)onCheckBtnClick:(id)sender
 {
-    CCActionSheet *sheet = [[CCActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Twitter Account", nil)];
+    CCActionSheet *sheet = [[CCActionSheet alloc] initWithTitle:NSLocalizedString(@"Select Check In Method", nil)];
     [sheet addButtonWithTitle:@"Automatic" block:^{
         
     }];
