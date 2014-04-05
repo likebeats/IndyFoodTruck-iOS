@@ -93,11 +93,6 @@
     geoPoint.longitude = coordinates.longitude;
     
     PFObject *theTruck = [PFObject objectWithoutDataWithClassName:@"Trucks" objectId:self.truck.truckId];
-//    theTruck[@"objectId"] = self.truck.truckId;
-//    theTruck[@"truckName"] = self.truck.truckName;
-//    theTruck[@"truckAvatarURL"] = sle.ftruck.truckAvatarURL;
-//    theTruck[@"truckPhone"] = truck.truckPhone;
-//    theTruck[@"truckWebsite"] = truck.truckMenuURL;
     
     PFObject *theTruckLocation = [PFObject objectWithClassName:@"Truck_Locations"];
     theTruckLocation[@"truckLocation"] = geoPoint;
