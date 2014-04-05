@@ -17,8 +17,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 @interface MenuViewController ()
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
-
-@property (nonatomic, strong) UIImageView *windowBackground;
+@property (nonatomic, strong) IBOutlet UIButton *manageTrucksBtn;
 
 @end
 
@@ -40,13 +39,11 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     
     [self.tableView registerClass:[MSMenuCell class] forCellReuseIdentifier:MSMenuCellReuseIdentifier];
     [self.tableView registerClass:[MSMenuTableViewHeader class] forHeaderFooterViewReuseIdentifier:MSDrawerHeaderReuseIdentifier];
-    self.tableView.backgroundColor = [UIColor blueColor];
-    self.tableView.separatorColor = [UIColor colorWithWhite:1.0 alpha:0.25];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -54,10 +51,26 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     return 1;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [cell setBackgroundColor:[UIColor colorWithRed:46.0f/255.0f green:62.0f/255.0f blue:82.0f/255.0f alpha:1.0f]];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MSMenuCellReuseIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = @"Today";
+    
+    if (indexPath.section == 0) {
+        cell.textLabel.text = @"Date";
+        
+    } else if (indexPath.section == 1) {
+        cell.textLabel.text = @"Anytime";
+        
+    } else if (indexPath.section == 2) {
+        cell.textLabel.text = @"View Fav Trucks";
+        
+    }
+    
     return cell;
 }
 
@@ -71,38 +84,27 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     return 35.0;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return CGFLOAT_MIN; // Hacky way to prevent extra dividers after the end of the table from showing
-}
-
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     UITableViewHeaderFooterView *headerView = [self.tableView dequeueReusableHeaderFooterViewWithIdentifier:MSDrawerHeaderReuseIdentifier];
-    headerView.textLabel.text = @"Header";
+    
+    if (section == 0) {
+        headerView.textLabel.text = @"Date";
+        
+    } else if (section == 1) {
+        headerView.textLabel.text = @"Time";
+        
+    } else if (section == 2) {
+        headerView.textLabel.text = @"Favorites";
+        
+    }
     return headerView;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    return [UIView new]; // Hacky way to prevent extra dividers after the end of the table from showing
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - MSAppDelegate
-
-- (UIImageView *)windowBackground
-{
-    if (!_windowBackground) {
-        _windowBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LaunchImage"]];
-    }
-    return _windowBackground;
 }
 
 /*

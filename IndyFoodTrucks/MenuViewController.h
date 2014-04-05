@@ -6,6 +6,6 @@
 //  Copyright (c) 2014 AppDar. All rights reserved.
 //
 
-@interface MenuViewController : UITableViewController
+@interface MenuViewController : UIViewController
 
 @end
