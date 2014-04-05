@@ -8,8 +8,12 @@
 
 #import "MapViewController.h"
 #import "TruckDetailViewController.h"
+#import "MyCustomAnnotation.h"
 
-@interface MapViewController ()
+@interface MapViewController (){
+    CLLocationManager *locationManager;
+    NSMutableArray *annotations;
+}
 
 @end
 
@@ -40,7 +44,65 @@
     TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
     truckDetailViewController.truck = truckForm;
     
-  //  [self.navigationController pushViewController:truckDetailViewController animated:NO];
+  
+    PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
+   // [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+            [objects enumerateObjectsUsingBlock:^(PFObject *pfTruck, NSUInteger idx, BOOL *stop) {
+                
+                PFObject *truckObject = (PFObject*)pfTruck[@"truck"];
+                [truckObject fetchIfNeeded];
+                
+                TruckForm *theTruck = [TruckForm new];
+                theTruck.truckId = pfTruck.objectId;
+                if (truckObject[@"truckAvatarURL"]) theTruck.truckAvatarURL = truckObject[@"truckAvatarURL"];
+                if (truckObject[@"truckInfo"]) theTruck.truckInfo = truckObject[@"truckInfo"];
+                if (truckObject[@"truckMenuURL"]) theTruck.truckMenuURL = truckObject[@"truckMenuURL"];
+                if (truckObject[@"truckName"]) theTruck.truckName = truckObject[@"truckName"];
+                if (truckObject[@"truckPhone"]) theTruck.truckPhone = truckObject[@"truckPhone"];
+                if (truckObject[@"truckTwitter"]) theTruck.truckTwitter = truckObject[@"truckTwitter"];
+                if (truckObject[@"truckTwitterId"]) theTruck.truckTwitterId = truckObject[@"truckTwitterId"];
+                if (truckObject[@"truckWebsite"]) theTruck.truckWebsite = truckObject[@"truckWebsite"];
+                
+                MyCustomAnnotation *myCustomAnnotation = [[MyCustomAnnotation alloc] initWithTruck:theTruck];
+                
+                PFGeoPoint *currentLocationGeoPoint = pfTruck[@"truckLocation"];
+                
+                myCustomAnnotation.coordinate = CLLocationCoordinate2DMake(currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude) ;
+        
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [annotations addObject:myCustomAnnotation];
+                    [self.mapview addAnnotation:myCustomAnnotation];
+                });
+                
+                
+            }];
+
+            NSLog(@"Successfully retrieved %lu trucks.", (unsigned long)objects.count);
+           // [self.theTableview reloadData];
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        MKCoordinateRegion region;
+        region.center = CLLocationCoordinate2DMake(39.768403, -86.158068);
+    
+        MKCoordinateSpan span;
+        span.latitudeDelta  = 0.2; // Change these values to change the zoom
+        span.longitudeDelta = 0.2;
+        region.span = span;
+        
+        [self.mapview setRegion:region animated:YES];
+        
+       // [self.mapview setCenterCoordinate:self.mapview.userLocation.coordinate animated:YES];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -71,6 +133,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//Keep reference of the selected annotation
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView
+{
+    if (![aView.annotation isKindOfClass:[MyCustomAnnotation class]]) return;
+    
+    MyCustomAnnotation *myCustomAnn = (MyCustomAnnotation *)aView.annotation;
+   
+    TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
+    truckDetailViewController.truck = myCustomAnn.truck;
+    
+    [self.navigationController pushViewController:truckDetailViewController animated:YES];
+    
+
+}
+
 
 /*
 #pragma mark - Navigation
