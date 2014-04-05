@@ -323,9 +323,26 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		65E965F118F0493C000877C4 /* Yelp API */ = {
+			isa = PBXGroup;
+			children = (
+				65E965F218F0494F000877C4 /* YelpKeys.plist */,
+				65E965F318F0494F000877C4 /* YLBusiness.h */,
+				65E965F418F0494F000877C4 /* YLBusiness.m */,
+				65E965F518F0494F000877C4 /* YLClient.h */,
+				65E965F618F0494F000877C4 /* YLClient.m */,
+				65E965F718F0494F000877C4 /* YLLocalSearch.h */,
+				65E965F818F0494F000877C4 /* YLLocalSearch.m */,
+				65E965F918F0494F000877C4 /* YLLocalSearchResponse.h */,
+				65E965FA18F0494F000877C4 /* YLLocalSearchResponse.m */,
+			);
+			name = "Yelp API";
+			sourceTree = "<group>";
+		};
 		EB624DFC18EF6D0000770C4B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				65E965F118F0493C000877C4 /* Yelp API */,
 				65E9659B18EF9E2C000877C4 /* CCActionSheet & CCAlertView */,
 				65E9656B18EF83F9000877C4 /* Parse FB Fix */,
 			);
@@ -429,6 +446,7 @@
 			files = (
 				65606B0C18EB3437007954BB /* Images.xcassets in Resources */,
 				65606B0418EB3437007954BB /* Main_iPhone.storyboard in Resources */,
+				65E965FB18F0494F000877C4 /* YelpKeys.plist in Resources */,
 				65606AFB18EB3437007954BB /* InfoPlist.strings in Resources */,
 				EB177A0718F048DB00026E09 /* LocationMapCell.xib in Resources */,
 			);
@@ -491,15 +509,19 @@
 				65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */,
 				EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */,
 				EB624E5918EF8AE900770C4B /* TruckForm.m in Sources */,
+				65E965FC18F0494F000877C4 /* YLBusiness.m in Sources */,
 				65E9659918EF9E27000877C4 /* CCActionSheet.m in Sources */,
 				65606B0118EB3437007954BB /* AppDelegate.m in Sources */,
 				EB624DF618EF61E300770C4B /* MapViewController.m in Sources */,
+				65E965FE18F0494F000877C4 /* YLLocalSearch.m in Sources */,
 				65606AFD18EB3437007954BB /* main.m in Sources */,
 				EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */,
 				65E965A518EFAD04000877C4 /* MSMenuCell.m in Sources */,
 				65E9659A18EF9E27000877C4 /* CCAlertView.m in Sources */,
 				65E9659418EF9DE7000877C4 /* TruckLoginViewController.m in Sources */,
 				EB624E6018EF914700770C4B /* TruckDetailViewController.m in Sources */,
+				65E965FF18F0494F000877C4 /* YLLocalSearchResponse.m in Sources */,
+				65E965FD18F0494F000877C4 /* YLClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
