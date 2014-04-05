@@ -36,11 +36,6 @@
 		65E9656A18EF837C000877C4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656918EF837C000877C4 /* Social.framework */; };
 		65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9656D18EF8422000877C4 /* FBMissingSymbols.m */; };
 		65E9656F18EF8422000877C4 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9656D18EF8422000877C4 /* FBMissingSymbols.m */; };
-		65E9657318EF8629000877C4 /* TruckLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9657218EF8629000877C4 /* TruckLoginViewController.m */; };
-		65E9657418EF8629000877C4 /* TruckLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9657218EF8629000877C4 /* TruckLoginViewController.m */; };
-		65E9657618EF8708000877C4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9657518EF8708000877C4 /* MapKit.framework */; };
-		65E9658C18EF8933000877C4 /* CCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9658918EF8933000877C4 /* CCActionSheet.m */; };
-		65E9658D18EF8933000877C4 /* CCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9658B18EF8933000877C4 /* CCAlertView.m */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 		EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5418EF8A3400770C4B /* TruckFormViewController.m */; };
@@ -95,13 +90,6 @@
 		65E9656718EF8363000877C4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		65E9656918EF837C000877C4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		65E9656D18EF8422000877C4 /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBMissingSymbols.m; path = IndyFoodTrucks/FBMissingSymbols.m; sourceTree = SOURCE_ROOT; };
-		65E9657118EF8629000877C4 /* TruckLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckLoginViewController.h; sourceTree = "<group>"; };
-		65E9657218EF8629000877C4 /* TruckLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckLoginViewController.m; sourceTree = "<group>"; };
-		65E9657518EF8708000877C4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		65E9658818EF8933000877C4 /* CCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCActionSheet.h; path = ../CCActionSheet.h; sourceTree = "<group>"; };
-		65E9658918EF8933000877C4 /* CCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCActionSheet.m; path = ../CCActionSheet.m; sourceTree = "<group>"; };
-		65E9658A18EF8933000877C4 /* CCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAlertView.h; path = ../CCAlertView.h; sourceTree = "<group>"; };
-		65E9658B18EF8933000877C4 /* CCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAlertView.m; path = ../CCAlertView.m; sourceTree = "<group>"; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -227,7 +215,6 @@
 		65606AF718EB3437007954BB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				65E9658E18EF8938000877C4 /* CCActionSheet & CCAlertview */,
 				65606AF818EB3437007954BB /* IndyFoodTrucks-Info.plist */,
 				65606AF918EB3437007954BB /* InfoPlist.strings */,
 				65606AFC18EB3437007954BB /* main.m */,
@@ -270,19 +257,7 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		65E9658E18EF8938000877C4 /* CCActionSheet & CCAlertview */ = {
-			isa = PBXGroup;
-			children = (
-				65E9658818EF8933000877C4 /* CCActionSheet.h */,
-				65E9658918EF8933000877C4 /* CCActionSheet.m */,
-				65E9658A18EF8933000877C4 /* CCAlertView.h */,
-				65E9658B18EF8933000877C4 /* CCAlertView.m */,
-			);
-			name = "CCActionSheet & CCAlertview";
-			path = Utils;
-			sourceTree = "<group>";
-		};
-		EB624DFC18EF6D0000770C4B /* Utils */ = {
+		EB624E5618EF8A3D00770C4B /* TruckFormViewController */ = {
 			isa = PBXGroup;
 			children = (
 				EB624E5718EF8AE900770C4B /* TruckForm.h */,
@@ -461,9 +436,8 @@
 				EB624E6818EF93C200770C4B /* TruckCheckInViewController.m in Sources */,
 				EB624DF618EF61E300770C4B /* MapViewController.m in Sources */,
 				65606AFD18EB3437007954BB /* main.m in Sources */,
-				65E9658D18EF8933000877C4 /* CCAlertView.m in Sources */,
 				EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */,
-				65E9658C18EF8933000877C4 /* CCActionSheet.m in Sources */,
+				EB624E6018EF914700770C4B /* TruckDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
