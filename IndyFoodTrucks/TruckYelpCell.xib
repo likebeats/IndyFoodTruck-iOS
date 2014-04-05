@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -13,24 +13,44 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uEb-yE-dQD">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uEb-yE-dQD">
                         <rect key="frame" x="5" y="5" width="60" height="60"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="edv-NJ-VQ8"/>
+                            <constraint firstAttribute="width" constant="60" id="igh-c4-z2X"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbM-yT-P33" userLabel="TruckTitleLabel">
-                        <rect key="frame" x="73" y="13" width="235" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbM-yT-P33" userLabel="TruckTitleLabel">
+                        <rect key="frame" x="73" y="13" width="227" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Cvf-qR-d2E"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPw-V2-2de" userLabel="TruckDetailLabel">
-                        <rect key="frame" x="73" y="34" width="235" height="21"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPw-V2-2de" userLabel="TruckDetailLabel">
+                        <rect key="frame" x="73" y="34" width="220" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="jtY-km-rEu"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="xbM-yT-P33" firstAttribute="leading" secondItem="uEb-yE-dQD" secondAttribute="trailing" constant="8" id="ASW-bp-WPw"/>
+                    <constraint firstItem="xbM-yT-P33" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="Ec1-GZ-0qR"/>
+                    <constraint firstItem="WPw-V2-2de" firstAttribute="leading" secondItem="uEb-yE-dQD" secondAttribute="trailing" constant="8" id="JKr-BB-snD"/>
+                    <constraint firstItem="uEb-yE-dQD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="SJy-hE-yan"/>
+                    <constraint firstItem="uEb-yE-dQD" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="WbH-H2-e0f"/>
+                    <constraint firstAttribute="trailing" secondItem="WPw-V2-2de" secondAttribute="trailing" constant="27" id="biP-iG-Ch3"/>
+                    <constraint firstItem="WPw-V2-2de" firstAttribute="top" secondItem="xbM-yT-P33" secondAttribute="bottom" id="dx0-eI-bjW"/>
+                    <constraint firstAttribute="trailing" secondItem="xbM-yT-P33" secondAttribute="trailing" constant="20" id="l5H-OM-Gcj"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="truckDetailLabel" destination="WPw-V2-2de" id="yfc-jB-1qy"/>

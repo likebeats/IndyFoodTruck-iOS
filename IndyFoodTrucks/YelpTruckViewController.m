@@ -87,6 +87,8 @@
     if (cell == nil) {
         [tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        
+
     }
     
     // Configure the cell...
@@ -106,6 +108,7 @@
     [cell.truckImageView setImageWithURL:[NSURL URLWithString:truck.image_url]
                       placeholderImage:[UIImage imageNamed:@"AppIcon"]];
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
