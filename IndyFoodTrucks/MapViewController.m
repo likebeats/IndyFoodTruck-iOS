@@ -40,7 +40,7 @@
     TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
     truckDetailViewController.truck = truckForm;
     
-    [self.navigationController pushViewController:truckDetailViewController animated:NO];
+  //  [self.navigationController pushViewController:truckDetailViewController animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated

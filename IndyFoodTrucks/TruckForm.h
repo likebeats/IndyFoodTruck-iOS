@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *truckName;
 @property (nonatomic, copy) NSString *truckInfo;
 @property (nonatomic, copy) NSString *truckMenuURL;
+@property (nonatomic, copy) NSString *truckAvatarURL;
 @property (nonatomic, copy) NSString *truckTwitter;
 @property (nonatomic, copy) NSString *truckTwitterId;
 @property (nonatomic, copy) NSString *truckWebsite;

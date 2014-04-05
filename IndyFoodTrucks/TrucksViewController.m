@@ -6,11 +6,15 @@
 //  Copyright (c) 2014 AppDar. All rights reserved.
 //
 
+#define ARCHIVE_TRUCKS_KEY @"ARCHIVE_TRUCKS_KEY2"
+
 #import "TrucksViewController.h"
 #import "TruckFormViewController.h"
 #import "YelpTruckViewController.h"
+#import "TruckForm.h"
+#import "TruckDetailViewController.h"
 
-@interface TrucksViewController (){
+@interface TrucksViewController () <YelpTruckViewControllerDelegate>{
     NSMutableArray *trucks;
     BOOL noTrucks;
     
@@ -34,14 +38,17 @@
 {
     [super viewDidLoad];
     
-    self.title = @"Trucks";
+    self.title = @"My Trucks";
     UIBarButtonItem *addBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Add", nil)
                                                                style:UIBarButtonItemStylePlain
                                                               target:self
                                                               action:@selector(onAddBtnClicked:)];
     self.navigationItem.rightBarButtonItem = addBtn;
     
-
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:ARCHIVE_TRUCKS_KEY];
+    trucks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (!trucks) trucks = [NSMutableArray new];
 
 }
 
@@ -52,6 +59,7 @@
     
     
     YelpTruckViewController *yelpTruckViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"YelpTruckViewController"];
+    yelpTruckViewController.delegate = self;
     [self.navigationController pushViewController:yelpTruckViewController animated:YES];
 }
 
@@ -81,7 +89,7 @@
         return [self noTrucksCell];
     }
     
-    PFObject *truck = trucks[indexPath.row];
+    TruckForm *truck = (TruckForm*)trucks[indexPath.row];
 
     static NSString *CellIdentifier = @"TruckCell";
     UITableViewCell *cell = [self.theTableview dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -90,7 +98,7 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = truck[@"truckName"];
+    cell.textLabel.text = truck.truckName;
     return cell;
 }
 
@@ -110,14 +118,41 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    // Navigation logic may go here, for example:
-//    // Create the next view controller.
-//    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-//    
-//    // Pass the selected object to the new view controller.
-//    
-//    // Push the view controller.
-//    [self.navigationController pushViewController:detailViewController animated:YES];
+    TruckForm *truck = (TruckForm*)trucks[indexPath.row];
+    [theTableview deselectRowAtIndexPath:indexPath animated:YES];
+    TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
+    truckDetailViewController.truck = truck;
+    [self.navigationController pushViewController:truckDetailViewController animated:YES];
+}
+
+#pragma mark - Yelp Truck View Controller 
+
+-(void)truckSelected:(YLBusiness *)truck {
+    PFObject *theTruck = [PFObject objectWithClassName:@"Trucks"];
+    theTruck[@"truckName"] = truck.name;
+    if (truck.image_url) theTruck[@"truckAvatarURL"] = truck.image_url;
+    if (truck.phone) theTruck[@"truckPhone"] = truck.phone;
+    if (truck.url) theTruck[@"truckWebsite"] = truck.url;
+    
+    TruckForm *truckObject = [TruckForm new];
+    truckObject.truckName = truck.name;
+    
+    if (truck.image_url) truckObject.truckAvatarURL = truck.image_url;
+    if (truck.phone) truckObject.truckPhone = truck.phone;
+    if (truck.url) truckObject.truckWebsite = truck.url;
+    
+    [trucks addObject:truckObject];
+    
+    [theTableview reloadData];
+    
+    [theTruck saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        truckObject.truckId = theTruck.objectId;
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:trucks];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:ARCHIVE_TRUCKS_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+    
+
 }
 
 /*

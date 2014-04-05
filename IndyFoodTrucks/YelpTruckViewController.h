@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YLBusiness.h"
+
+
+@protocol YelpTruckViewControllerDelegate <NSObject>
+
+@optional
+- (void)truckSelected:(YLBusiness *)truck;
+
+
+@end
 
 @interface YelpTruckViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) IBOutlet UITableView *theTableview;
+
+@property (nonatomic, weak) id<YelpTruckViewControllerDelegate> delegate;
 
 @end

@@ -47,8 +47,6 @@
                                                                action:@selector(onEditBtnClick:)];
     //self.navigationItem.rightBarButtonItem = editBtn;
     
-    self.truck.truckId = @"ZCicvjw5tg";
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
     [query whereKey:@"truck" equalTo:[PFObject objectWithoutDataWithClassName:@"Trucks" objectId:self.truck.truckId]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {

@@ -112,6 +112,20 @@
     return cell;
 }
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (trucks.count == 0){
+        return;
+    }
+    YLBusiness *truck = (YLBusiness*)trucks[indexPath.row];
+    
+    if (self.delegate) [self.delegate truckSelected:truck];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
 - (UITableViewCell *) noTrucksCell  {
     static NSString *CellIdentifier = @"NoTruckCell";
     UITableViewCell *cell = [self.theTableview dequeueReusableCellWithIdentifier:CellIdentifier];
