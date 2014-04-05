@@ -43,6 +43,7 @@
 		EB624E5D18EF90A500770C4B /* TruckSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5C18EF90A500770C4B /* TruckSelectionViewController.m */; };
 		EB624E6018EF914700770C4B /* TruckDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5F18EF914700770C4B /* TruckDetailsViewController.m */; };
 		EB624E6818EF93C200770C4B /* TruckCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E6718EF93C200770C4B /* TruckCheckInViewController.m */; };
+		EBE7688518EF99350037755F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBE7688418EF99350037755F /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		EB624E5F18EF914700770C4B /* TruckDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckDetailsViewController.m; sourceTree = "<group>"; };
 		EB624E6618EF93C200770C4B /* TruckCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckCheckInViewController.h; sourceTree = "<group>"; };
 		EB624E6718EF93C200770C4B /* TruckCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckCheckInViewController.m; sourceTree = "<group>"; };
+		EBE7688418EF99350037755F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBE7688518EF99350037755F /* MapKit.framework in Frameworks */,
 				65E9656A18EF837C000877C4 /* Social.framework in Frameworks */,
 				65E9656818EF8363000877C4 /* Accounts.framework in Frameworks */,
 				65E9656618EF8309000877C4 /* SystemConfiguration.framework in Frameworks */,
@@ -165,6 +168,7 @@
 		65606AEF18EB3437007954BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EBE7688418EF99350037755F /* MapKit.framework */,
 				65E9656918EF837C000877C4 /* Social.framework */,
 				65E9656718EF8363000877C4 /* Accounts.framework */,
 				65E9656518EF8309000877C4 /* SystemConfiguration.framework */,
