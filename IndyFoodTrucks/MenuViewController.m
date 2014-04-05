@@ -11,13 +11,17 @@
 #import "MSMenuCell.h"
 #import "TruckSingleton.h"
 #import "CCActionSheet.h"
+#import "TruckForm.h"
+#import "TruckDetailViewController.h"
 
+#define ARCHIVE_FAV_TRUCKS_KEY @"ARCHIVE_FAV_TRUCKS_KEY"
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
 NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
 @interface MenuViewController () <UIActionSheetDelegate> {
     NSDate *pickerDate;
+    NSMutableArray *favTrucks;
 }
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
@@ -41,6 +45,11 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:ARCHIVE_FAV_TRUCKS_KEY];
+    favTrucks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (!favTrucks) favTrucks = [NSMutableArray new];
+    
     [self.tableView registerClass:[MSMenuCell class] forCellReuseIdentifier:MSMenuCellReuseIdentifier];
     [self.tableView registerClass:[MSMenuTableViewHeader class] forHeaderFooterViewReuseIdentifier:MSDrawerHeaderReuseIdentifier];
 }
@@ -52,6 +61,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 2) return favTrucks.count;
     return 1;
 }
 
@@ -89,7 +99,9 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         }
         
     } else if (indexPath.section == 2) {
-        cell.textLabel.text = @"View Favorites";
+        
+        TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
+        cell.textLabel.text = truck.truckName;
         
     }
     
@@ -140,6 +152,17 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         [actionSheet addCancelButtonWithTitle:@"Cancel"];
         
         [actionSheet showInView:self.view.superview];
+        
+    } else if (indexPath.section == 2) {
+        
+        TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
+        TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
+        truckDetailViewController.truck = truck;
+        
+        UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+        [controller pushViewController:truckDetailViewController animated:YES];
+        [self.dynamicsDrawerViewController setPaneViewController:controller animated:YES completion:nil];
+        
     }
 }
 
