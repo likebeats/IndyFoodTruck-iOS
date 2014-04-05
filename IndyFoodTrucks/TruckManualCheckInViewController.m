@@ -40,6 +40,23 @@
     self.formController.tableView = self.tableView;
     self.formController.delegate = self;
     self.formController.form = [[ManualCheckInForm alloc] init];
+    
+    UIImageView *marker = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"marker"]];
+    marker.center = CGPointMake(self.mapView.frame.size.width/2, self.mapView.frame.size.height/2-marker.frame.size.height/2);
+    [self.mapView addSubview:marker];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        MKCoordinateRegion region;
+        region.center = CLLocationCoordinate2DMake(39.768403, -86.158068);
+        
+        MKCoordinateSpan span;
+        span.latitudeDelta  = 0.2;
+        span.longitudeDelta = 0.2;
+        region.span = span;
+        
+        [self.mapView setRegion:region animated:NO];
+    });
 }
 
 -  (void)viewWillAppear:(BOOL)animated
@@ -68,7 +85,30 @@
 
 - (void)onCheckInBtnClicked:(id)sender
 {
+    ManualCheckInForm *checkInForm = self.formController.form;
+    CLLocationCoordinate2D coordinates = self.mapView.centerCoordinate;
     
+    PFGeoPoint *geoPoint = [PFGeoPoint new];
+    geoPoint.latitude = coordinates.latitude;
+    geoPoint.longitude = coordinates.longitude;
+    
+    PFObject *theTruck = [PFObject objectWithoutDataWithClassName:@"Trucks" objectId:self.truck.truckId];
+//    theTruck[@"objectId"] = self.truck.truckId;
+//    theTruck[@"truckName"] = self.truck.truckName;
+//    theTruck[@"truckAvatarURL"] = sle.ftruck.truckAvatarURL;
+//    theTruck[@"truckPhone"] = truck.truckPhone;
+//    theTruck[@"truckWebsite"] = truck.truckMenuURL;
+    
+    PFObject *theTruckLocation = [PFObject objectWithClassName:@"Truck_Locations"];
+    theTruckLocation[@"truckLocation"] = geoPoint;
+    theTruckLocation[@"truck"] = theTruck;
+    theTruckLocation[@"locationName"] = checkInForm.locationName;
+    theTruckLocation[@"fromTime"] = checkInForm.fromTime;
+    theTruckLocation[@"toTime"] = checkInForm.toTime;
+    
+    [theTruckLocation saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (void)didReceiveMemoryWarning
