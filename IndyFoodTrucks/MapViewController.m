@@ -33,6 +33,14 @@
     self.title = @"#IndyFoodTrucks";
 
     //[self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"] animated:NO];
+    
+    TruckForm *truckForm = [[TruckForm alloc] init];
+    truckForm.truckName = @"Truck Name";
+    
+    TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
+    truckDetailViewController.truck = truckForm;
+    
+    [self.navigationController pushViewController:truckDetailViewController animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
