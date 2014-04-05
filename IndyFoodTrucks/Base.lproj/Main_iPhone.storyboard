@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HOW-X3-7EG">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HOW-X3-7EG">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.1803921568627451" green="0.24313725490196078" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,7 +70,11 @@
                         <constraints>
                             <constraint firstItem="8pf-Jt-fgs" firstAttribute="leading" secondItem="sZH-Dz-HF3" secondAttribute="leading" id="6vT-t3-4PR"/>
                             <constraint firstAttribute="trailing" secondItem="8pf-Jt-fgs" secondAttribute="trailing" id="Cvu-eq-lYv"/>
+                            <constraint firstItem="ukK-tS-H7T" firstAttribute="top" secondItem="HOW-X3-7EG" secondAttribute="bottom" id="J6Y-WF-PUN"/>
+                            <constraint firstItem="HOW-X3-7EG" firstAttribute="top" secondItem="sZH-Dz-HF3" secondAttribute="top" id="Q5Q-2a-w96"/>
                             <constraint firstItem="ukK-tS-H7T" firstAttribute="top" secondItem="8pf-Jt-fgs" secondAttribute="bottom" id="nSV-NX-2MH"/>
+                            <constraint firstItem="HOW-X3-7EG" firstAttribute="leading" secondItem="sZH-Dz-HF3" secondAttribute="leading" id="tcN-eO-yoI"/>
+                            <constraint firstAttribute="trailing" secondItem="HOW-X3-7EG" secondAttribute="trailing" id="uQA-uX-bAN"/>
                         </constraints>
                     </view>
                     <connections>

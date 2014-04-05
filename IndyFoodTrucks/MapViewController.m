@@ -35,15 +35,25 @@
 {
     [super viewDidLoad];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(fetchTrucks:)
+                                                 name:@"refreshTruckLocations"
+                                               object:nil];
+    
     self.title = @"#IndyFoodTrucks";
 
     [self fetchTrucks:nil];
+    
+
+}
+
+-(void) fetchTrucks: (NSNotification *)note {
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         
         MKCoordinateRegion region;
         region.center = CLLocationCoordinate2DMake(39.768403, -86.158068);
-    
+        
         MKCoordinateSpan span;
         span.latitudeDelta  = 0.2; // Change these values to change the zoom
         span.longitudeDelta = 0.2;
@@ -51,12 +61,10 @@
         
         [self.mapview setRegion:region animated:YES];
         
-       // [self.mapview setCenterCoordinate:self.mapview.userLocation.coordinate animated:YES];
+        // [self.mapview setCenterCoordinate:self.mapview.userLocation.coordinate animated:YES];
     });
-}
-
--(void) fetchTrucks: (NSNotification *)note {
-    [self.mapview removeAnnotations:annotations];
+    
+    [self.mapview removeAnnotations:self.mapview.annotations];
     [annotations removeAllObjects];
     PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
     // [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];

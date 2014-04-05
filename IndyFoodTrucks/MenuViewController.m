@@ -105,6 +105,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         
     }
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -163,6 +164,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         [controller pushViewController:truckDetailViewController animated:YES];
         [self.dynamicsDrawerViewController setPaneViewController:controller animated:YES completion:nil];
         
+
     }
 }
 
@@ -176,8 +178,11 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     if (buttonIndex == 0){
         if (![pickerDate isEqualToDate:[TruckSingleton singleton].selectedDate]){
             [TruckSingleton singleton].selectedDate = pickerDate;
-            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTruckLocations" object:nil];
             [_tableView reloadData];
+            [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:NO completion:^{
+                
+            }];
             //Refersh mapview
         }
         
