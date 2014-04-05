@@ -37,7 +37,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G6b-dt-Qg7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2326" y="67"/>
+            <point key="canvasLocation" x="2592" y="67"/>
         </scene>
         <!--Truck Form View Controller-->
         <scene sceneID="8u9-VS-CCg">
@@ -69,7 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toq-ty-keV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1931" y="67"/>
+            <point key="canvasLocation" x="2261" y="76"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="BhZ-9x-KPt">
@@ -179,6 +179,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ll6-ma-O5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1542" y="67"/>
+        </scene>
+        <!--Trucks View Controller-->
+        <scene sceneID="yf4-la-4JK">
+            <objects>
+                <viewController storyboardIdentifier="TrucksViewController" id="VF7-9g-wEq" customClass="TrucksViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xUd-10-fTT"/>
+                        <viewControllerLayoutGuide type="bottom" id="PC4-Ad-m0X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6RV-15-Ou4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j3j-LK-Wwv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="VF7-9g-wEq" id="j3F-qN-TGi"/>
+                                    <outlet property="delegate" destination="VF7-9g-wEq" id="keG-HL-5sA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j3j-LK-Wwv" secondAttribute="trailing" id="Fuf-nw-Vaq"/>
+                            <constraint firstItem="j3j-LK-Wwv" firstAttribute="leading" secondItem="6RV-15-Ou4" secondAttribute="leading" id="epF-JC-aRZ"/>
+                            <constraint firstItem="j3j-LK-Wwv" firstAttribute="top" secondItem="6RV-15-Ou4" secondAttribute="top" id="p9i-JY-GNx"/>
+                            <constraint firstItem="PC4-Ad-m0X" firstAttribute="top" secondItem="j3j-LK-Wwv" secondAttribute="bottom" id="qvb-QF-hoa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="theTableview" destination="j3j-LK-Wwv" id="6Tx-sG-839"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p0T-tt-rm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1888" y="95"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

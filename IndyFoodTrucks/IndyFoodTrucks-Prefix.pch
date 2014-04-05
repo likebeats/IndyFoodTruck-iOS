@@ -16,3 +16,6 @@
     #import <MSDynamicsDrawerViewController/MSDynamicsDrawerViewController.h>
     #import "HexColor.h"
 #endif
+
+
+#import <Parse/Parse.h>
