@@ -211,7 +211,7 @@
     
     cell.textLabel.text = @"Future Locations";
     cell.detailTextLabel.text = @"";
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -243,6 +243,10 @@
     } else if (indexPath.row == 4) {
         cell.textLabel.text = @"Website";
         cell.detailTextLabel.text = self.truck.truckWebsite;
+        
+    }else if (indexPath.row == 4) {
+        cell.textLabel.text = @"Add Favorite";
+        cell.detailTextLabel.text = @"Favorite Truck";
         
     }
     

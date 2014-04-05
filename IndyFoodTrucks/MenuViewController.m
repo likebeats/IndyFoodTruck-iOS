@@ -13,6 +13,7 @@
 #import "CCActionSheet.h"
 #import "TruckForm.h"
 #import "TruckDetailViewController.h"
+#import "TrucksViewController.h"
 
 #define ARCHIVE_FAV_TRUCKS_KEY @"ARCHIVE_FAV_TRUCKS_KEY"
 
@@ -132,22 +133,53 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         [actionSheet addButtonWithTitle:@"Anytime" block:^{
             [TruckSingleton singleton].selectedTime = TruckTimeTypeAnytime;
             [_tableView reloadData];
+            UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+            [controller popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTruckLocations" object:nil];
+            [_tableView reloadData];
+            [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:NO completion:^{
+                
+            }];
             
         }];
         
         [actionSheet addButtonWithTitle:@"Breakfast" block:^{
             [TruckSingleton singleton].selectedTime = TruckTimeTypeBreakfast;
             [_tableView reloadData];
+            
+            UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+            [controller popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTruckLocations" object:nil];
+            [_tableView reloadData];
+            [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:NO completion:^{
+                
+            }];
         }];
         
         [actionSheet addButtonWithTitle:@"Lunch" block:^{
             [TruckSingleton singleton].selectedTime = TruckTimeTypeLunch;
             [_tableView reloadData];
+            
+            UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+            [controller popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTruckLocations" object:nil];
+            [_tableView reloadData];
+            [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:NO completion:^{
+                
+            }];
         }];
         
         [actionSheet addButtonWithTitle:@"Dinner" block:^{
             [TruckSingleton singleton].selectedTime = TruckTimeTypeDinner;
             [_tableView reloadData];
+            
+            UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+            [controller popToRootViewControllerAnimated:YES];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTruckLocations" object:nil];
+            [_tableView reloadData];
+            [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:NO completion:^{
+                
+            }];
         }];
         
         [actionSheet addCancelButtonWithTitle:@"Cancel"];
@@ -178,6 +210,8 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     if (buttonIndex == 0){
         if (![pickerDate isEqualToDate:[TruckSingleton singleton].selectedDate]){
             [TruckSingleton singleton].selectedDate = pickerDate;
+            UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+            [controller popToRootViewControllerAnimated:YES];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshTruckLocations" object:nil];
             [_tableView reloadData];
             [self.dynamicsDrawerViewController setPaneState:MSDynamicsDrawerPaneStateClosed animated:YES allowUserInterruption:NO completion:^{
@@ -216,6 +250,16 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)manageTrucks:(id)sender {
+    TrucksViewController *trucksViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TrucksViewController"];
+   
+    
+    UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+    [controller pushViewController:trucksViewController animated:YES];
+    [self.dynamicsDrawerViewController setPaneViewController:controller animated:YES completion:nil];
+}
+
 
 /*
 #pragma mark - Navigation
