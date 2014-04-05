@@ -38,8 +38,8 @@
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerScaleStyler styler], [MSDynamicsDrawerFadeStyler styler]] forDirection:MSDynamicsDrawerDirectionLeft];
     [self.dynamicsDrawerViewController addStylersFromArray:@[[MSDynamicsDrawerParallaxStyler styler]] forDirection:MSDynamicsDrawerDirectionRight];
     
-    MenuViewController *menuViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Menu"];
-    MapViewController *mapViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"Map"];
+    MenuViewController *menuViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
+    MapViewController *mapViewController = [self.window.rootViewController.storyboard instantiateViewControllerWithIdentifier:@"MapViewController"];
     
     mapViewController.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
     [self.dynamicsDrawerViewController setDrawerViewController:menuViewController forDirection:MSDynamicsDrawerDirectionLeft];
@@ -87,6 +87,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - MSAppDelegate
+
+- (UIImageView *)windowBackground
+{
+    if (!_windowBackground) {
+        _windowBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"LaunchImage"]];
+    }
+    return _windowBackground;
 }
 
 @end

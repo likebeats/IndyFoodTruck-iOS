@@ -13,6 +13,8 @@
 
 @end
 
+
+
 @implementation MapViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -28,9 +30,9 @@
 {
     [super viewDidLoad];
     
-    self.title = @"#IndyTrucks";
-    
-    [self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"] animated:NO];
+    self.title = @"#IndyFoodTrucks";
+
+    //[self.navigationController pushViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"] animated:NO];
 }
 
 - (void)viewWillAppear:(BOOL)animated
