@@ -14,6 +14,7 @@
 #import "TruckManualCheckInViewController.h"
 #import "TruckAutomaticCheckInViewController.h"
 #import "TruckFutureLocationsViewController.h"
+#import "WebviewViewController.h"
 
 @interface TruckDetailViewController () <UITableViewDelegate>
 {
@@ -263,6 +264,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+     if (indexPath.row == 2) {
+         WebviewViewController *webviewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"webview"];
+         webviewViewController.url = self.truck.truckMenuURL;
+         
+         [self.navigationController pushViewController:webviewViewController animated:YES];
+         NSLog(@"Open URL");
+     }else if(indexPath.row == 4){
+         WebviewViewController *webviewViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"webview"];
+         webviewViewController.url = self.truck.truckWebsite;
+         
+         [self.navigationController pushViewController:webviewViewController animated:YES];
+     }
+    
     if (locations.count > 1) {
         if (indexPath.section == 0 && indexPath.row == 1) {
             
