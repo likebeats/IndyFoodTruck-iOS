@@ -1,14 +1,17 @@
 PODS:
+  - FXForms (1.1.1)
   - HexColors (2.2.1)
   - MSDynamicsDrawerViewController (1.5.1)
   - TSMessages (0.9.6):
     - HexColors
 
 DEPENDENCIES:
-  - MSDynamicsDrawerViewController
+  - FXForms (~> 1.1.1)
+  - MSDynamicsDrawerViewController (~> 1.5.1)
   - TSMessages
 
 SPEC CHECKSUMS:
+  FXForms: 851f7fd1f554d96643ddc523478b955f44e9df98
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   MSDynamicsDrawerViewController: 2409ca61449d8541a3ee640bfd2d230c3734d3c4
   TSMessages: 839edc3164b99ced48c30af9dde9710cd67bea4d
