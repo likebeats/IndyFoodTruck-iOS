@@ -9,6 +9,7 @@
 #import "YelpTruckViewController.h"
 #import "YLLocalSearch.h"
 #import "YLBusiness.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface YelpTruckViewController (){
     NSMutableArray *trucks;
@@ -67,6 +68,11 @@
     return [trucks count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 70;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (trucks.count == 0){
@@ -94,6 +100,10 @@
     }];
     
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categoryString];
+    
+    [cell.imageView setImageWithURL:[NSURL URLWithString:truck.image_url]
+                      placeholderImage:[UIImage imageNamed:@"AppIcon"]];
+    
     return cell;
 }
 
