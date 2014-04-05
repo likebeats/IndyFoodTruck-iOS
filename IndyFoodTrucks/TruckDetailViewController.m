@@ -103,6 +103,8 @@
         cell.textLabel.text = @"";
         cell.detailTextLabel.text = @"";
         
+        UIImageView *mapImageView = [UIImageView alloc]
+        
     } else if (indexPath.section == 1) {
         
         if (indexPath.row == 0) {
