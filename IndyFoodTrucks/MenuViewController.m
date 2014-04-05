@@ -9,12 +9,16 @@
 #import "MenuViewController.h"
 #import "MSMenuTableViewHeader.h"
 #import "MSMenuCell.h"
+#import "TruckSingleton.h"
+#import "CCActionSheet.h"
 
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
 NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
-@interface MenuViewController ()
+@interface MenuViewController () <UIActionSheetDelegate> {
+    NSDate *pickerDate;
+}
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet UIButton *manageTrucksBtn;
@@ -61,13 +65,32 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MSMenuCellReuseIdentifier forIndexPath:indexPath];
     
     if (indexPath.section == 0) {
-        cell.textLabel.text = @"Date";
+        NSDate *selectedDate = [TruckSingleton singleton].selectedDate;
+        
+        if (!selectedDate){
+            cell.textLabel.text = @"Today";
+        }else{
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"MMM d, YYYY"];
+            cell.textLabel.text = [dateFormat stringFromDate:selectedDate];
+        }
+        
         
     } else if (indexPath.section == 1) {
-        cell.textLabel.text = @"Anytime";
+        
+        NSInteger selectedTime = [TruckSingleton singleton].selectedTime;
+        if (selectedTime == TruckTimeTypeAnytime){
+           cell.textLabel.text = @"Anytime";
+        }else if(selectedTime == TruckTimeTypeBreakfast){
+            cell.textLabel.text = @"Breakfast";
+        }else if(selectedTime == TruckTimeTypeLunch){
+            cell.textLabel.text = @"Lunch";
+        }else if(selectedTime == TruckTimeTypeDinner){
+            cell.textLabel.text = @"Dinner";
+        }
         
     } else if (indexPath.section == 2) {
-        cell.textLabel.text = @"View Fav Trucks";
+        cell.textLabel.text = @"View Favorites";
         
     }
     
@@ -76,7 +99,67 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0){
+        NSString *title = UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? @"\n\n\n\n\n\n\n\n\n" : @"\n\n\n\n\n\n\n\n\n\n\n\n" ;
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:[NSString stringWithFormat:@"%@%@", title, NSLocalizedString(@"Select Date", @"")]
+                                      delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Ok", nil];
+        [actionSheet showInView:self.view.superview];
+        UIDatePicker *datePicker = [[UIDatePicker alloc] init];
+        datePicker.datePickerMode = UIDatePickerModeDate;
+        [datePicker addTarget:self
+                            action:@selector(showdate:)
+                  forControlEvents:UIControlEventValueChanged];
+
+        [actionSheet addSubview:datePicker];
+
+    }else if (indexPath.section == 1){
+        CCActionSheet *actionSheet = [[CCActionSheet alloc] initWithTitle:@"Select Time"];
+        
+        [actionSheet addButtonWithTitle:@"Anytime" block:^{
+            [TruckSingleton singleton].selectedTime = TruckTimeTypeAnytime;
+            [_tableView reloadData];
+            
+        }];
+        
+        [actionSheet addButtonWithTitle:@"Breakfast" block:^{
+            [TruckSingleton singleton].selectedTime = TruckTimeTypeBreakfast;
+            [_tableView reloadData];
+        }];
+        
+        [actionSheet addButtonWithTitle:@"Lunch" block:^{
+            [TruckSingleton singleton].selectedTime = TruckTimeTypeLunch;
+            [_tableView reloadData];
+        }];
+        
+        [actionSheet addButtonWithTitle:@"Dinner" block:^{
+            [TruckSingleton singleton].selectedTime = TruckTimeTypeDinner;
+            [_tableView reloadData];
+        }];
+        
+        [actionSheet addCancelButtonWithTitle:@"Cancel"];
+        
+        [actionSheet showInView:self.view.superview];
+    }
+}
+
+-(void)showdate:(id)sender{
+    UIDatePicker *datePicker = (UIDatePicker *)sender;
+    pickerDate = datePicker.date;
+    NSLog(@"Sender: %@", datePicker.date);
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+        if (![pickerDate isEqualToDate:[TruckSingleton singleton].selectedDate]){
+            [TruckSingleton singleton].selectedDate = pickerDate;
+            
+            [_tableView reloadData];
+            //Refersh mapview
+        }
+        
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
