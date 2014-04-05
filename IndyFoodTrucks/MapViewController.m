@@ -7,7 +7,7 @@
 //
 
 #import "MapViewController.h"
-#import "TruckFormViewController.h"
+#import "TruckDetailViewController.h"
 
 @interface MapViewController ()
 
