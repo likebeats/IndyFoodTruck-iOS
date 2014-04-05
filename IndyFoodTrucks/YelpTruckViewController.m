@@ -10,6 +10,7 @@
 #import "YLLocalSearch.h"
 #import "YLBusiness.h"
 #import "UIImageView+AFNetworking.h"
+#import "TruckYelpCell.h"
 
 @interface YelpTruckViewController (){
     NSMutableArray *trucks;
@@ -81,14 +82,15 @@
     
     YLBusiness *truck = (YLBusiness*)trucks[indexPath.row];
     
-    static NSString *CellIdentifier = @"TruckCell";
-    UITableViewCell *cell = [self.theTableview dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"TruckYelpCell";
+    TruckYelpCell *cell = [self.theTableview dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        [tableView registerNib:[UINib nibWithNibName:CellIdentifier bundle:nil] forCellReuseIdentifier:CellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
     
     // Configure the cell...
-    cell.textLabel.text = truck.name;
+    cell.truckTitleLabel.text = truck.name;
     __block NSString *categoryString = [NSString new];
     
     [truck.categories enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -99,9 +101,9 @@
 
     }];
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", categoryString];
+    cell.truckDetailLabel.text = [NSString stringWithFormat:@"%@", categoryString];
     
-    [cell.imageView setImageWithURL:[NSURL URLWithString:truck.image_url]
+    [cell.truckImageView setImageWithURL:[NSURL URLWithString:truck.image_url]
                       placeholderImage:[UIImage imageNamed:@"AppIcon"]];
     
     return cell;
