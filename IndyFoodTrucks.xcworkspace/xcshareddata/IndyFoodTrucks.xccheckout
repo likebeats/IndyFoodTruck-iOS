@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>713D48FE-DC32-45FA-87FB-7F9E302C87A4</string>
+	<string>2EBC7B89-DCC3-46A6-B8B3-E1CC3BF828E2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>IndyFoodTrucks</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>3820B8C7-7F5C-471D-9607-83EB3C63EC8D</key>
+		<key>25F061FA-3E8C-47AC-AF69-3A40EF11666E</key>
 		<string>ssh://bitbucket.org/appdar/indyfoodtruck-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>IndyFoodTrucks.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>3820B8C7-7F5C-471D-9607-83EB3C63EC8D</key>
+		<key>25F061FA-3E8C-47AC-AF69-3A40EF11666E</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,16 +25,16 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>3820B8C7-7F5C-471D-9607-83EB3C63EC8D</string>
+	<string>25F061FA-3E8C-47AC-AF69-3A40EF11666E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>3820B8C7-7F5C-471D-9607-83EB3C63EC8D</string>
+			<string>25F061FA-3E8C-47AC-AF69-3A40EF11666E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>iOS</string>
+			<string>indyfoodtruck-ios</string>
 		</dict>
 	</array>
 </dict>

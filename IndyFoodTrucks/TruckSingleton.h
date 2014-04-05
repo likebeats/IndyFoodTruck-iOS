@@ -11,6 +11,14 @@
 #import <Social/Social.h>
 #import <Twitter/Twitter.h>
 
+
+typedef enum {
+    TruckTimeTypeAnytime,
+    TruckTimeTypeBreakfast,
+    TruckTimeTypeLunch,
+    TruckTimeTypeDinner
+} TruckTimeType;
+
 @interface TruckSingleton : NSObject
 
 + (TruckSingleton*)singleton;
@@ -18,5 +26,8 @@
 @property (nonatomic, strong) ACAccount *twitterAccount;
 
 @property (nonatomic, strong) NSDictionary *twitterUserInfo;
+
+@property (nonatomic, strong) NSDate *selectedDate;
+@property (nonatomic) TruckTimeType selectedTime;
 
 @end
