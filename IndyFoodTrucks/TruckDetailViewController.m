@@ -58,7 +58,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             locations = [objects mutableCopy];
-            NSLog(@"Locations %@", locations);
             [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
                 NSDate *fromTime = [location objectForKey:@"fromTime"];
                 NSDate *toTime = [location objectForKey:@"toTime"];
@@ -69,6 +68,9 @@
                     *stop = YES;
                 }
             }];
+            
+            NSLog(@"Locations %@", locations);
+            NSLog(@"currentLocationObject %@", currentLocationObject);
             
             [self.tableView reloadData];
         }
@@ -149,7 +151,7 @@
                 return [self futureLocationsCell];
             }
             
-            if (index == 0 && locations.count > 0) {
+            if (indexPath.row == 0 && locations.count > 0) {
                 
                 return [self futureLocationsCell];
                 
@@ -260,15 +262,26 @@
     if (locations.count > 1) {
         if (indexPath.section == 0 && indexPath.row == 1) {
             
-            TruckFutureLocationsViewController *truckFutureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckFutureLocationsViewController"];
-            truckFutureViewController.locations = locations;
-            truckFutureViewController.currentLocationObject = currentLocationObject;
-            [self.navigationController pushViewController:truckFutureViewController animated:YES];
+            [self openFutureLocationsController];
+            
+        }
+    } else if (locations.count > 0) {
+        if (indexPath.section == 0 && indexPath.row == 0) {
+            
+            [self openFutureLocationsController];
             
         }
     }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)openFutureLocationsController
+{
+    TruckFutureLocationsViewController *truckFutureViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckFutureLocationsViewController"];
+    truckFutureViewController.locations = locations;
+    truckFutureViewController.currentLocationObject = currentLocationObject;
+    [self.navigationController pushViewController:truckFutureViewController animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
