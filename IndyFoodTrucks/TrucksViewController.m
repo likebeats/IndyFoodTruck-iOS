@@ -40,21 +40,7 @@
                                                               action:@selector(onAddBtnClicked:)];
     self.navigationItem.rightBarButtonItem = addBtn;
     
-    ACAccount *twitterAccount = [[TruckSingleton singleton] twitterAccount];
-    NSString *userId = [[twitterAccount valueForKey:@"properties"] valueForKey:@"user_id"];
-    
-    PFQuery *query = [PFQuery queryWithClassName:@"Trucks"];
-    [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            trucks = [objects mutableCopy];
-            NSLog(@"Successfully retrieved %lu trucks.", (unsigned long)objects.count);
-            [self.theTableview reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+
 
 }
 
@@ -139,5 +125,26 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+/*
+ 
+ 
+ ACAccount *twitterAccount = [[TruckSingleton singleton] twitterAccount];
+ NSString *userId = [[twitterAccount valueForKey:@"properties"] valueForKey:@"user_id"];
+ 
+ PFQuery *query = [PFQuery queryWithClassName:@"Trucks"];
+ [query whereKey:@"truckTwitterId" equalTo:@([userId integerValue])];
+ [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+ if (!error) {
+ trucks = [objects mutableCopy];
+ NSLog(@"Successfully retrieved %lu trucks.", (unsigned long)objects.count);
+ [self.theTableview reloadData];
+ } else {
+ // Log details of the failure
+ NSLog(@"Error: %@ %@", error, [error userInfo]);
+ }
+ }];
+ 
+ */
 
 @end
