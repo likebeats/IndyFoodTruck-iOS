@@ -50,6 +50,7 @@
     
     // Transition to the first view controller
     UINavigationController *paneNavigationViewController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
+    menuViewController.dynamicsDrawerViewController = self.dynamicsDrawerViewController;
     [self.dynamicsDrawerViewController setPaneViewController:paneNavigationViewController animated:nil completion:nil];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
