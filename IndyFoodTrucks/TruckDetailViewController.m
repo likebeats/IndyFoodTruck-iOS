@@ -208,6 +208,7 @@
     }
     
     cell.textLabel.text = @"Future Locations";
+    cell.detailTextLabel.text = @"";
     
     return cell;
 }
