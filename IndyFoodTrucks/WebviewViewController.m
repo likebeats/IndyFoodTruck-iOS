@@ -29,11 +29,13 @@
     // Do any additional setup after loading the view.
 
     
-    NSURL* nsUrl = [NSURL URLWithString:self.url];
-    
-    NSURLRequest* request = [NSURLRequest requestWithURL:nsUrl cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
-    
-    [self.webview loadRequest:request];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSURL* nsUrl = [NSURL URLWithString:self.url];
+        
+        NSURLRequest* request = [NSURLRequest requestWithURL:nsUrl cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:30];
+        
+        [self.webview loadRequest:request];
+    });
 }
 
 - (void)didReceiveMemoryWarning
