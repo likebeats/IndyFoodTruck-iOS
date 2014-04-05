@@ -56,7 +56,7 @@
                 [truckObject fetchIfNeeded];
                 
                 TruckForm *theTruck = [TruckForm new];
-                theTruck.truckId = pfTruck.objectId;
+                theTruck.truckId = truckObject.objectId;
                 if (truckObject[@"truckAvatarURL"]) theTruck.truckAvatarURL = truckObject[@"truckAvatarURL"];
                 if (truckObject[@"truckInfo"]) theTruck.truckInfo = truckObject[@"truckInfo"];
                 if (truckObject[@"truckMenuURL"]) theTruck.truckMenuURL = truckObject[@"truckMenuURL"];

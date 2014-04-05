@@ -58,7 +58,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             locations = [objects mutableCopy];
-            
+            NSLog(@"Locations %@", locations);
             [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
                 NSDate *fromTime = [location objectForKey:@"fromTime"];
                 NSDate *toTime = [location objectForKey:@"toTime"];
