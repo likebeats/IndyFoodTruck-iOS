@@ -11,6 +11,8 @@
 #import "CCActionSheet.h"
 #import "UIImageView+AFNetworking.h"
 #import "LocationMapCell.h"
+#import "TruckManualCheckInViewController.h"
+#import "TruckAutomaticCheckInViewController.h"
 
 @interface TruckDetailViewController () <UITableViewDelegate>
 {
@@ -72,8 +74,18 @@
     CCActionSheet *sheet = [[CCActionSheet alloc] initWithTitle:NSLocalizedString(@"Select check-in method", nil)];
     [sheet addButtonWithTitle:@"Automatic" block:^{
         
+        TruckAutomaticCheckInViewController *checkInViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckAutomaticCheckIn"];
+        checkInViewController.truck = self.truck;
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:checkInViewController];
+        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
+        
     }];
-    [sheet addButtonWithTitle:@"Manuel" block:^{
+    [sheet addButtonWithTitle:@"Manual" block:^{
+        
+        TruckManualCheckInViewController *checkInViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckManualCheckIn"];
+        checkInViewController.truck = self.truck;
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:checkInViewController];
+        [self.navigationController presentViewController:navigationController animated:YES completion:nil];
         
     }];
     

@@ -52,6 +52,10 @@
 		EB177A0818F04D2C00026E09 /* YLClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E965F618F0494F000877C4 /* YLClient.m */; };
 		EB177A0C18F05C7200026E09 /* TruckYelpCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A0A18F05C7200026E09 /* TruckYelpCell.m */; };
 		EB177A0D18F05C7200026E09 /* TruckYelpCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB177A0B18F05C7200026E09 /* TruckYelpCell.xib */; };
+		EB177A1318F05F9600026E09 /* TruckAutomaticCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A1218F05F9600026E09 /* TruckAutomaticCheckInViewController.m */; };
+		EB177A1618F05FAD00026E09 /* TruckManualCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A1518F05FAD00026E09 /* TruckManualCheckInViewController.m */; };
+		EB177A1918F065FC00026E09 /* ManualCheckInForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A1818F065FC00026E09 /* ManualCheckInForm.m */; };
+		EB177A1C18F0661500026E09 /* AutomaticCheckInForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EB177A1B18F0661500026E09 /* AutomaticCheckInForm.m */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 		EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5418EF8A3400770C4B /* TruckFormViewController.m */; };
@@ -134,6 +138,14 @@
 		EB177A0918F05C7200026E09 /* TruckYelpCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckYelpCell.h; sourceTree = "<group>"; };
 		EB177A0A18F05C7200026E09 /* TruckYelpCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckYelpCell.m; sourceTree = "<group>"; };
 		EB177A0B18F05C7200026E09 /* TruckYelpCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TruckYelpCell.xib; sourceTree = "<group>"; };
+		EB177A1118F05F9600026E09 /* TruckAutomaticCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckAutomaticCheckInViewController.h; sourceTree = "<group>"; };
+		EB177A1218F05F9600026E09 /* TruckAutomaticCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckAutomaticCheckInViewController.m; sourceTree = "<group>"; };
+		EB177A1418F05FAD00026E09 /* TruckManualCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckManualCheckInViewController.h; sourceTree = "<group>"; };
+		EB177A1518F05FAD00026E09 /* TruckManualCheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckManualCheckInViewController.m; sourceTree = "<group>"; };
+		EB177A1718F065FC00026E09 /* ManualCheckInForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualCheckInForm.h; sourceTree = "<group>"; };
+		EB177A1818F065FC00026E09 /* ManualCheckInForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualCheckInForm.m; sourceTree = "<group>"; };
+		EB177A1A18F0661500026E09 /* AutomaticCheckInForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutomaticCheckInForm.h; sourceTree = "<group>"; };
+		EB177A1B18F0661500026E09 /* AutomaticCheckInForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutomaticCheckInForm.m; sourceTree = "<group>"; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -304,6 +316,10 @@
 			children = (
 				EB624E5718EF8AE900770C4B /* TruckForm.h */,
 				EB624E5818EF8AE900770C4B /* TruckForm.m */,
+				EB177A1718F065FC00026E09 /* ManualCheckInForm.h */,
+				EB177A1818F065FC00026E09 /* ManualCheckInForm.m */,
+				EB177A1A18F0661500026E09 /* AutomaticCheckInForm.h */,
+				EB177A1B18F0661500026E09 /* AutomaticCheckInForm.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -384,6 +400,10 @@
 				EB624E5418EF8A3400770C4B /* TruckFormViewController.m */,
 				65E9659218EF9DE7000877C4 /* TruckLoginViewController.h */,
 				65E9659318EF9DE7000877C4 /* TruckLoginViewController.m */,
+				EB177A1118F05F9600026E09 /* TruckAutomaticCheckInViewController.h */,
+				EB177A1218F05F9600026E09 /* TruckAutomaticCheckInViewController.m */,
+				EB177A1418F05FAD00026E09 /* TruckManualCheckInViewController.h */,
+				EB177A1518F05FAD00026E09 /* TruckManualCheckInViewController.m */,
 			);
 			name = "Trucks Controllers";
 			sourceTree = "<group>";
@@ -524,12 +544,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB624E5D18EF90A500770C4B /* TrucksViewController.m in Sources */,
+				EB177A1618F05FAD00026E09 /* TruckManualCheckInViewController.m in Sources */,
+				EB177A1C18F0661500026E09 /* AutomaticCheckInForm.m in Sources */,
 				65E965A618EFAD04000877C4 /* MSMenuTableViewHeader.m in Sources */,
 				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
 				EB177A0618F048DB00026E09 /* LocationMapCell.m in Sources */,
+				EB177A1918F065FC00026E09 /* ManualCheckInForm.m in Sources */,
 				65E9659E18EF9FBE000877C4 /* TruckSingleton.m in Sources */,
 				65606B0A18EB3437007954BB /* RootViewController.m in Sources */,
 				65E965A918F04558000877C4 /* YelpTruckViewController.m in Sources */,
+				EB177A1318F05F9600026E09 /* TruckAutomaticCheckInViewController.m in Sources */,
 				EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */,
 				EB624E5918EF8AE900770C4B /* TruckForm.m in Sources */,
 				65E965FC18F0494F000877C4 /* YLBusiness.m in Sources */,
