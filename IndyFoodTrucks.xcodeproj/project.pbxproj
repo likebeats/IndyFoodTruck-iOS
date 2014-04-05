@@ -23,6 +23,20 @@
 		65606B1518EB3438007954BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65606AF418EB3437007954BB /* UIKit.framework */; };
 		65606B1D18EB3438007954BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65606B1B18EB3438007954BB /* InfoPlist.strings */; };
 		65606B1F18EB3438007954BB /* IndyFoodTrucksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65606B1E18EB3438007954BB /* IndyFoodTrucksTests.m */; };
+		65E9655518EF82A8000877C4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655418EF82A8000877C4 /* Parse.framework */; };
+		65E9655618EF82A8000877C4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655418EF82A8000877C4 /* Parse.framework */; };
+		65E9655818EF82D1000877C4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655718EF82D1000877C4 /* AudioToolbox.framework */; };
+		65E9655A18EF82D8000877C4 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655918EF82D8000877C4 /* CFNetwork.framework */; };
+		65E9655C18EF82E9000877C4 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655B18EF82E9000877C4 /* libz.dylib */; };
+		65E9655E18EF82F0000877C4 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655D18EF82F0000877C4 /* MobileCoreServices.framework */; };
+		65E9656018EF82F9000877C4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9655F18EF82F9000877C4 /* QuartzCore.framework */; };
+		65E9656218EF82FE000877C4 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656118EF82FE000877C4 /* Security.framework */; };
+		65E9656418EF8303000877C4 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656318EF8303000877C4 /* StoreKit.framework */; };
+		65E9656618EF8309000877C4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656518EF8309000877C4 /* SystemConfiguration.framework */; };
+		65E9656818EF8363000877C4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656718EF8363000877C4 /* Accounts.framework */; };
+		65E9656A18EF837C000877C4 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9656918EF837C000877C4 /* Social.framework */; };
+		65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9656D18EF8422000877C4 /* FBMissingSymbols.m */; };
+		65E9656F18EF8422000877C4 /* FBMissingSymbols.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9656D18EF8422000877C4 /* FBMissingSymbols.m */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 /* End PBXBuildFile section */
@@ -60,6 +74,18 @@
 		65606B1A18EB3438007954BB /* IndyFoodTrucksTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IndyFoodTrucksTests-Info.plist"; sourceTree = "<group>"; };
 		65606B1C18EB3438007954BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65606B1E18EB3438007954BB /* IndyFoodTrucksTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndyFoodTrucksTests.m; sourceTree = "<group>"; };
+		65E9655418EF82A8000877C4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		65E9655718EF82D1000877C4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		65E9655918EF82D8000877C4 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		65E9655B18EF82E9000877C4 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		65E9655D18EF82F0000877C4 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		65E9655F18EF82F9000877C4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		65E9656118EF82FE000877C4 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		65E9656318EF8303000877C4 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		65E9656518EF8309000877C4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		65E9656718EF8363000877C4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		65E9656918EF837C000877C4 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		65E9656D18EF8422000877C4 /* FBMissingSymbols.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBMissingSymbols.m; path = IndyFoodTrucks/FBMissingSymbols.m; sourceTree = SOURCE_ROOT; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -71,10 +97,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E9656A18EF837C000877C4 /* Social.framework in Frameworks */,
+				65E9656818EF8363000877C4 /* Accounts.framework in Frameworks */,
+				65E9656618EF8309000877C4 /* SystemConfiguration.framework in Frameworks */,
+				65E9656418EF8303000877C4 /* StoreKit.framework in Frameworks */,
+				65E9656218EF82FE000877C4 /* Security.framework in Frameworks */,
+				65E9656018EF82F9000877C4 /* QuartzCore.framework in Frameworks */,
+				65E9655E18EF82F0000877C4 /* MobileCoreServices.framework in Frameworks */,
+				65E9655C18EF82E9000877C4 /* libz.dylib in Frameworks */,
 				65606AF318EB3437007954BB /* CoreGraphics.framework in Frameworks */,
+				65E9655A18EF82D8000877C4 /* CFNetwork.framework in Frameworks */,
+				65E9655818EF82D1000877C4 /* AudioToolbox.framework in Frameworks */,
 				65606AF518EB3437007954BB /* UIKit.framework in Frameworks */,
 				65606AF118EB3437007954BB /* Foundation.framework in Frameworks */,
 				20E9C2C236F2443189681324 /* libPods.a in Frameworks */,
+				65E9655518EF82A8000877C4 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +121,7 @@
 			files = (
 				65606B1318EB3437007954BB /* XCTest.framework in Frameworks */,
 				65606B1518EB3438007954BB /* UIKit.framework in Frameworks */,
+				65E9655618EF82A8000877C4 /* Parse.framework in Frameworks */,
 				65606B1418EB3438007954BB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -114,6 +152,17 @@
 		65606AEF18EB3437007954BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65E9656918EF837C000877C4 /* Social.framework */,
+				65E9656718EF8363000877C4 /* Accounts.framework */,
+				65E9656518EF8309000877C4 /* SystemConfiguration.framework */,
+				65E9656318EF8303000877C4 /* StoreKit.framework */,
+				65E9656118EF82FE000877C4 /* Security.framework */,
+				65E9655F18EF82F9000877C4 /* QuartzCore.framework */,
+				65E9655D18EF82F0000877C4 /* MobileCoreServices.framework */,
+				65E9655B18EF82E9000877C4 /* libz.dylib */,
+				65E9655918EF82D8000877C4 /* CFNetwork.framework */,
+				65E9655718EF82D1000877C4 /* AudioToolbox.framework */,
+				65E9655418EF82A8000877C4 /* Parse.framework */,
 				65606AF018EB3437007954BB /* Foundation.framework */,
 				65606AF218EB3437007954BB /* CoreGraphics.framework */,
 				65606AF418EB3437007954BB /* UIKit.framework */,
@@ -172,9 +221,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		65E9656B18EF83F9000877C4 /* Parse FB Fix */ = {
+			isa = PBXGroup;
+			children = (
+				65E9656D18EF8422000877C4 /* FBMissingSymbols.m */,
+			);
+			name = "Parse FB Fix";
+			sourceTree = "<group>";
+		};
 		EB624DFC18EF6D0000770C4B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				65E9656B18EF83F9000877C4 /* Parse FB Fix */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -312,6 +370,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
 				65606B0A18EB3437007954BB /* RootViewController.m in Sources */,
 				65606B0118EB3437007954BB /* AppDelegate.m in Sources */,
 				EB624DF618EF61E300770C4B /* MapViewController.m in Sources */,
@@ -324,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E9656F18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
 				65606B1F18EB3438007954BB /* IndyFoodTrucksTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +550,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IndyFoodTrucks/IndyFoodTrucks-Prefix.pch";
@@ -512,6 +573,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IndyFoodTrucks/IndyFoodTrucks-Prefix.pch";

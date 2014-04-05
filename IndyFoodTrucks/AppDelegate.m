@@ -11,6 +11,7 @@
 #import "MSDynamicsDrawerStyler.h"
 #import "MenuViewController.h"
 #import "MapViewController.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate () <MSDynamicsDrawerViewControllerDelegate>
 
@@ -51,6 +52,13 @@
     [self.window makeKeyAndVisible];
     [self.window addSubview:self.windowBackground];
     [self.window sendSubviewToBack:self.windowBackground];
+    
+    [Parse setApplicationId:@"haTczq6g3pIpm2icxtsnjlNOf8daXRXnXBEw1eOA"
+                  clientKey:@"eEB7Vqj0JPtI7GnBLLOuTHGAeknefMDUROsoikXN"];
+    
+//    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+//    testObject[@"foo"] = @"bar";
+//    [testObject saveInBackground];
     
     return YES;
 }
