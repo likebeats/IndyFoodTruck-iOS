@@ -108,17 +108,6 @@
     return 50;
 }
 
-- (NSString *)urlEncodeWithString: (NSString*)string
-{
-    CFStringRef urlString = CFURLCreateStringByAddingPercentEscapes(
-                                                                    NULL,
-                                                                    (CFStringRef)string,
-                                                                    NULL,
-                                                                    (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
-                                                                    kCFStringEncodingUTF8 );
-    return (NSString *)CFBridgingRelease(urlString);
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -144,11 +133,9 @@
         }];
                 
         NSLog(@"%@", currentLocationGeoPoint);
-        NSString *mapURL = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=13&size=320x150&maptype=roadmap&markers=color:green|%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
-        NSString *url = [self urlEncodeWithString:mapURL];
+        NSString *mapURL = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=13&size=320x150&maptype=roadmap&markers=color:green|%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
         NSLog(@"%@", mapURL);
-        NSLog(@"%@", url);
-        [cell.mapImageView setImageWithURL:[NSURL URLWithString:url]
+        [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
                            placeholderImage:nil];
         
         return cell;
