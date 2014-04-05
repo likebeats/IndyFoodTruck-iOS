@@ -12,6 +12,7 @@
 
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "YLBusiness.h"
 
 @interface YLLocalSearchResponse ()
 - (instancetype)initWithV2Dictionary:(NSDictionary *)yelp;
@@ -33,7 +34,7 @@
 
 - (void)localSearchWithTerm:(NSString *)searchTerm
                      offset:(NSNumber *)offset
-                    success:(void(^)(YLLocalSearchResponse* response)) success
+                    success:(void(^)(NSMutableArray* response)) success
                     failure:(void(^)(NSError* error)) failure
 {
     YLClient *client = [YLClient new];
@@ -42,7 +43,13 @@
 
     [client getPath:@"search" parameters:paramDictionary
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                success?success([[YLLocalSearchResponse alloc] initWithV2Dictionary:responseObject]):0;
+                NSMutableArray *businesses = [NSMutableArray new];
+                for (NSDictionary *bd in responseObject[@"businesses"]) {
+                    YLBusiness *b = [[YLBusiness alloc] initWithDictionary:bd];
+                    [businesses addObject:b];
+                }
+                
+                success?success(businesses):0;
             }
             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                 failure?failure(error):0;

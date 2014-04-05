@@ -19,7 +19,7 @@
 
 - (void)localSearchWithTerm:(NSString *)searchTerm
                      offset:(NSNumber *)offset
-                    success:(void(^)(YLLocalSearchResponse* response)) success
+                    success:(void(^)(NSMutableArray* response)) success
                     failure:(void(^)(NSError* error)) failure;
 
 @end

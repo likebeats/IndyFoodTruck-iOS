@@ -262,6 +262,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xId-ds-n8p" id="RoG-Vk-N0i"/>
+                                    <outlet property="delegate" destination="xId-ds-n8p" id="Oiv-uv-o3z"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -272,6 +276,9 @@
                             <constraint firstItem="wj1-GF-Gr2" firstAttribute="leading" secondItem="gOm-sr-fU3" secondAttribute="leading" id="wQQ-4F-TtP"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="theTableview" destination="wj1-GF-Gr2" id="KZt-yG-xh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jbc-qo-y3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

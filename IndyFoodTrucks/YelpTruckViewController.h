@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YelpTruckViewController : UIViewController
+@interface YelpTruckViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) IBOutlet UITableView *theTableview;
 
 @end
