@@ -15,7 +15,6 @@
 		65606AFD18EB3437007954BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 65606AFC18EB3437007954BB /* main.m */; };
 		65606B0118EB3437007954BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 65606B0018EB3437007954BB /* AppDelegate.m */; };
 		65606B0418EB3437007954BB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65606B0218EB3437007954BB /* Main_iPhone.storyboard */; };
-		65606B0718EB3437007954BB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65606B0518EB3437007954BB /* Main_iPad.storyboard */; };
 		65606B0A18EB3437007954BB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65606B0918EB3437007954BB /* RootViewController.m */; };
 		65606B0C18EB3437007954BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65606B0B18EB3437007954BB /* Images.xcassets */; };
 		65606B1318EB3437007954BB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65606B1218EB3437007954BB /* XCTest.framework */; };
@@ -65,7 +64,6 @@
 		65606AFF18EB3437007954BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		65606B0018EB3437007954BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		65606B0318EB3437007954BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		65606B0618EB3437007954BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		65606B0818EB3437007954BB /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		65606B0918EB3437007954BB /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		65606B0B18EB3437007954BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -178,13 +176,7 @@
 				65606AFF18EB3437007954BB /* AppDelegate.h */,
 				65606B0018EB3437007954BB /* AppDelegate.m */,
 				65606B0218EB3437007954BB /* Main_iPhone.storyboard */,
-				65606B0518EB3437007954BB /* Main_iPad.storyboard */,
-				65606B0818EB3437007954BB /* RootViewController.h */,
-				65606B0918EB3437007954BB /* RootViewController.m */,
-				EB624DF118EF5F0C00770C4B /* MenuViewController.h */,
-				EB624DF218EF5F0C00770C4B /* MenuViewController.m */,
-				EB624DF418EF61E300770C4B /* MapViewController.h */,
-				EB624DF518EF61E300770C4B /* MapViewController.m */,
+				65E9657018EF85B3000877C4 /* Controllers */,
 				65606B0B18EB3437007954BB /* Images.xcassets */,
 				EB624DFC18EF6D0000770C4B /* Utils */,
 				65606AF718EB3437007954BB /* Supporting Files */,
@@ -227,6 +219,19 @@
 				65E9656D18EF8422000877C4 /* FBMissingSymbols.m */,
 			);
 			name = "Parse FB Fix";
+			sourceTree = "<group>";
+		};
+		65E9657018EF85B3000877C4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				65606B0818EB3437007954BB /* RootViewController.h */,
+				65606B0918EB3437007954BB /* RootViewController.m */,
+				EB624DF118EF5F0C00770C4B /* MenuViewController.h */,
+				EB624DF218EF5F0C00770C4B /* MenuViewController.m */,
+				EB624DF418EF61E300770C4B /* MapViewController.h */,
+				EB624DF518EF61E300770C4B /* MapViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		EB624DFC18EF6D0000770C4B /* Utils */ = {
@@ -315,7 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65606B0718EB3437007954BB /* Main_iPad.storyboard in Resources */,
 				65606B0C18EB3437007954BB /* Images.xcassets in Resources */,
 				65606B0418EB3437007954BB /* Main_iPhone.storyboard in Resources */,
 				65606AFB18EB3437007954BB /* InfoPlist.strings in Resources */,
@@ -413,14 +417,6 @@
 				65606B0318EB3437007954BB /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		65606B0518EB3437007954BB /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65606B0618EB3437007954BB /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		65606B1B18EB3438007954BB /* InfoPlist.strings */ = {
