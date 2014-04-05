@@ -13,13 +13,14 @@
 #import "CCActionSheet.h"
 #import "TruckForm.h"
 #import "TruckDetailViewController.h"
+#import "YelpTruckViewController.h"
 
 #define ARCHIVE_FAV_TRUCKS_KEY @"ARCHIVE_FAV_TRUCKS_KEY"
 
 NSString * const MSMenuCellReuseIdentifier = @"Drawer Cell";
 NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
-@interface MenuViewController () <UIActionSheetDelegate> {
+@interface MenuViewController () <UIActionSheetDelegate, YelpTruckViewControllerDelegate> {
     NSDate *pickerDate;
     NSMutableArray *favTrucks;
 }
@@ -52,6 +53,10 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     
     [self.tableView registerClass:[MSMenuCell class] forCellReuseIdentifier:MSMenuCellReuseIdentifier];
     [self.tableView registerClass:[MSMenuTableViewHeader class] forHeaderFooterViewReuseIdentifier:MSDrawerHeaderReuseIdentifier];
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.manageTrucksBtn.frame.size.height, 0.0);
+    self.tableView.contentInset = contentInsets;
+    self.tableView.scrollIndicatorInsets = contentInsets;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -61,7 +66,7 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 2) return favTrucks.count;
+    if (section == 2) return favTrucks.count+1;
     return 1;
 }
 
@@ -100,8 +105,14 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         
     } else if (indexPath.section == 2) {
         
-        TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
-        cell.textLabel.text = truck.truckName;
+        if (indexPath.row == favTrucks.count) {
+            
+            cell.textLabel.text = @"+ Add a Truck";
+            
+        } else {
+            TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
+            cell.textLabel.text = truck.truckName;
+        }
         
     }
     
@@ -156,16 +167,57 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         
     } else if (indexPath.section == 2) {
         
-        TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
-        TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
-        truckDetailViewController.truck = truck;
-        
-        UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
-        [controller pushViewController:truckDetailViewController animated:YES];
-        [self.dynamicsDrawerViewController setPaneViewController:controller animated:YES completion:nil];
+        if (indexPath.row == favTrucks.count) {
+            
+            YelpTruckViewController *yelpTruckViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"YelpTruckViewController"];
+            yelpTruckViewController.delegate = self;
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:yelpTruckViewController];
+            [self.dynamicsDrawerViewController.paneViewController presentViewController:navigationController animated:YES completion:nil];
+            
+        } else {
+            
+            TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
+            TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
+            truckDetailViewController.truck = truck;
+            
+            UINavigationController *controller = (UINavigationController*)self.dynamicsDrawerViewController.paneViewController;
+            [controller pushViewController:truckDetailViewController animated:YES];
+            [self.dynamicsDrawerViewController setPaneViewController:controller animated:YES completion:nil];
+            
+        }
         
 
     }
+}
+
+#pragma mark - Yelp Truck View Controller 
+
+- (void)truckSelected:(YLBusiness *)truck
+{
+    [self.dynamicsDrawerViewController.paneViewController dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+    PFObject *theTruck = [PFObject objectWithClassName:@"Trucks"];
+    theTruck[@"truckName"] = truck.name;
+    if (truck.image_url) theTruck[@"truckAvatarURL"] = truck.image_url;
+    if (truck.phone) theTruck[@"truckPhone"] = truck.phone;
+    if (truck.url) theTruck[@"truckWebsite"] = truck.url;
+    
+    TruckForm *truckObject = [TruckForm new];
+    truckObject.truckName = truck.name;
+    
+    if (truck.image_url) truckObject.truckAvatarURL = truck.image_url;
+    if (truck.phone) truckObject.truckPhone = truck.phone;
+    if (truck.url) truckObject.truckWebsite = truck.url;
+    
+    [favTrucks addObject:truckObject];
+    
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:favTrucks];
+    [[NSUserDefaults standardUserDefaults] setObject:data forKey:ARCHIVE_FAV_TRUCKS_KEY];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self.tableView reloadData];
 }
 
 -(void)showdate:(id)sender{
