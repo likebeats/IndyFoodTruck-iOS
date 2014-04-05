@@ -32,14 +32,14 @@
 }
 
 - (void)localSearchWithTerm:(NSString *)searchTerm
+                     offset:(NSNumber *)offset
                     success:(void(^)(YLLocalSearchResponse* response)) success
                     failure:(void(^)(NSError* error)) failure
 {
     YLClient *client = [YLClient new];
     
-    NSMutableDictionary *paramDictionary = [[self boundingBoxFromMapRect] mutableCopy];
-    [paramDictionary addEntriesFromDictionary:@{@"term": searchTerm}];
-    
+    NSDictionary *paramDictionary = @{@"location": @"indianapolis", @"term": searchTerm, @"limit": @20, @"offset": offset};
+
     [client getPath:@"search" parameters:paramDictionary
             success:^(AFHTTPRequestOperation *operation, id responseObject) {
                 success?success([[YLLocalSearchResponse alloc] initWithV2Dictionary:responseObject]):0;

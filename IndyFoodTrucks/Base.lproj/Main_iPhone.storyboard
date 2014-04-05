@@ -51,7 +51,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="toq-ty-keV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2261" y="76"/>
+            <point key="canvasLocation" x="2450" y="-555"/>
         </scene>
         <!--Truck Detail View Controller-->
         <scene sceneID="ruZ-Ap-JU9">
@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gB8-rR-Zr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2319" y="67"/>
+            <point key="canvasLocation" x="2639" y="55"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="GwO-Rz-Mpt">
@@ -245,6 +245,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p0T-tt-rm6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1888" y="95"/>
+        </scene>
+        <!--Yelp Truck View Controller-->
+        <scene sceneID="nWm-j6-i5g">
+            <objects>
+                <viewController storyboardIdentifier="YelpTruckViewController" id="xId-ds-n8p" customClass="YelpTruckViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rRg-xt-hYa"/>
+                        <viewControllerLayoutGuide type="bottom" id="vpk-UR-qnW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gOm-sr-fU3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wj1-GF-Gr2">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wj1-GF-Gr2" secondAttribute="trailing" id="0GD-4w-KNO"/>
+                            <constraint firstItem="vpk-UR-qnW" firstAttribute="top" secondItem="wj1-GF-Gr2" secondAttribute="bottom" id="XPf-ad-Ukw"/>
+                            <constraint firstItem="wj1-GF-Gr2" firstAttribute="top" secondItem="gOm-sr-fU3" secondAttribute="top" id="l5N-j4-kgm"/>
+                            <constraint firstItem="wj1-GF-Gr2" firstAttribute="leading" secondItem="gOm-sr-fU3" secondAttribute="leading" id="wQQ-4F-TtP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jbc-qo-y3P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2228" y="95"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

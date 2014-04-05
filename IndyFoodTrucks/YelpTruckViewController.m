@@ -7,6 +7,7 @@
 //
 
 #import "YelpTruckViewController.h"
+#import "YLLocalSearch.h"
 
 @interface YelpTruckViewController ()
 
@@ -27,6 +28,19 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    YLLocalSearch *search = [[YLLocalSearch alloc] init];
+    
+    [search localSearchWithTerm:@"Food Trucks"
+                            offset:@0
+                        success:^(YLLocalSearchResponse *results) {
+                            NSLog(@"%@",results);
+
+                        }
+                        failure:^(NSError *error) {
+                            NSLog(@"%@",error);
+                        }];
+    
 }
 
 - (void)didReceiveMemoryWarning
