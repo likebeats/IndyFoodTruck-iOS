@@ -23,12 +23,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Parse setApplicationId:@"haTczq6g3pIpm2icxtsnjlNOf8daXRXnXBEw1eOA"
+                  clientKey:@"eEB7Vqj0JPtI7GnBLLOuTHGAeknefMDUROsoikXN"];
+    
     NSDictionary *textTitleOptions = [NSDictionary dictionaryWithObjectsAndKeys:
                                       [UIColor whiteColor], NSForegroundColorAttributeName,
                                       nil];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#6faea4"]];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     // Override point for customization after application launch.
     self.dynamicsDrawerViewController = (MSDynamicsDrawerViewController *)self.window.rootViewController;
@@ -53,11 +57,6 @@
     [self.window makeKeyAndVisible];
     [self.window addSubview:self.windowBackground];
     [self.window sendSubviewToBack:self.windowBackground];
-    
-    [Parse setApplicationId:@"haTczq6g3pIpm2icxtsnjlNOf8daXRXnXBEw1eOA"
-                  clientKey:@"eEB7Vqj0JPtI7GnBLLOuTHGAeknefMDUROsoikXN"];
-    
-[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
 }

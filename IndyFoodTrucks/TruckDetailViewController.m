@@ -13,6 +13,9 @@
 #import "LocationMapCell.h"
 
 @interface TruckDetailViewController () <UITableViewDelegate>
+{
+    NSMutableArray *locations;
+}
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 
@@ -43,6 +46,18 @@
                                                                target:self
                                                                action:@selector(onEditBtnClick:)];
     //self.navigationItem.rightBarButtonItem = editBtn;
+    
+    self.truck.truckId = @"ZCicvjw5tg";
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
+    [query whereKey:@"truck" equalTo:[PFObject objectWithoutDataWithClassName:@"Trucks" objectId:self.truck.truckId]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            locations = [objects mutableCopy];
+            NSLog(@"%@", locations);
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (void)onEditBtnClick:(id)sender
@@ -93,6 +108,17 @@
     return 50;
 }
 
+- (NSString *)urlEncodeWithString: (NSString*)string
+{
+    CFStringRef urlString = CFURLCreateStringByAddingPercentEscapes(
+                                                                    NULL,
+                                                                    (CFStringRef)string,
+                                                                    NULL,
+                                                                    (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                                    kCFStringEncodingUTF8 );
+    return (NSString *)CFBridgingRelease(urlString);
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
@@ -104,9 +130,25 @@
             cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         }
         
-        NSString *mapURL = @"http://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=11&size=320x150&maptype=roadmap&markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318&markers=color:red%7Clabel:C%7C40.718217,-73.998284&sensor=false";
-        
-        [cell.mapImageView setImageWithURL:[NSURL URLWithString:mapURL]
+        __block PFGeoPoint *currentLocationGeoPoint;
+        [locations enumerateObjectsUsingBlock:^(PFObject *location, NSUInteger idx, BOOL *stop) {
+            NSDate *fromTime = [location objectForKey:@"fromTime"];
+            NSDate *toTime = [location objectForKey:@"toTime"];
+            PFGeoPoint *geoPoint = [location objectForKey:@"truckLocation"];
+            
+            if (([[NSDate date] compare:fromTime] == NSOrderedDescending) &&
+                ([[NSDate date] compare:toTime] == NSOrderedAscending)) {
+                currentLocationGeoPoint = geoPoint;
+                *stop = YES;
+            }
+        }];
+                
+        NSLog(@"%@", currentLocationGeoPoint);
+        NSString *mapURL = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/staticmap?center=%f,%f&zoom=13&size=320x150&maptype=roadmap&markers=color:green|%f,%f&sensor=false", currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude, currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude];
+        NSString *url = [self urlEncodeWithString:mapURL];
+        NSLog(@"%@", mapURL);
+        NSLog(@"%@", url);
+        [cell.mapImageView setImageWithURL:[NSURL URLWithString:url]
                            placeholderImage:nil];
         
         return cell;
