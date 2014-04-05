@@ -15,6 +15,8 @@
 @property (nonatomic,nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) TruckForm *truck;
 
+@property (nonatomic, copy) NSString *title;
+
 - (id)initWithTruck:(TruckForm *)theTruck;
 
 @end

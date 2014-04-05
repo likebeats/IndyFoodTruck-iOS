@@ -15,13 +15,15 @@
 @end
 
 @implementation MyCustomAnnotation
-@synthesize truck;
+@synthesize truck, title;
 
 - (id)initWithTruck:(TruckForm *)theTruck {
     
     self = [super init];
-    if (self)
-        truck = theTruck;
+    
+    truck = theTruck;
+    self.title = theTruck.truckName;
+    
 
     return self;
 }

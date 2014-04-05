@@ -68,9 +68,16 @@
                 
                 MyCustomAnnotation *myCustomAnnotation = [[MyCustomAnnotation alloc] initWithTruck:theTruck];
                 
-             //   myCustomAnnotation.coordinate = location.locationCoords;
-                [annotations addObject:myCustomAnnotation];
-                [self.mapview addAnnotation:myCustomAnnotation];
+                PFGeoPoint *currentLocationGeoPoint = pfTruck[@"truckLocation"];
+                
+                myCustomAnnotation.coordinate = CLLocationCoordinate2DMake(currentLocationGeoPoint.latitude, currentLocationGeoPoint.longitude) ;
+        
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [annotations addObject:myCustomAnnotation];
+                    [self.mapview addAnnotation:myCustomAnnotation];
+                });
+                
                 
             }];
 
@@ -81,6 +88,21 @@
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
     }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        MKCoordinateRegion region;
+        region.center = CLLocationCoordinate2DMake(39.768403, -86.158068);
+    
+        MKCoordinateSpan span;
+        span.latitudeDelta  = 0.2; // Change these values to change the zoom
+        span.longitudeDelta = 0.2;
+        region.span = span;
+        
+        [self.mapview setRegion:region animated:YES];
+        
+       // [self.mapview setCenterCoordinate:self.mapview.userLocation.coordinate animated:YES];
+    });
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -111,6 +133,22 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//Keep reference of the selected annotation
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)aView
+{
+    if (![aView.annotation isKindOfClass:[MyCustomAnnotation class]]) return;
+    
+    MyCustomAnnotation *myCustomAnn = (MyCustomAnnotation *)aView.annotation;
+   
+    TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
+    truckDetailViewController.truck = myCustomAnn.truck;
+    
+    [self.navigationController pushViewController:truckDetailViewController animated:YES];
+    
+
+}
+
 
 /*
 #pragma mark - Navigation
