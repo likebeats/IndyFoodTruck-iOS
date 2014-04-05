@@ -48,11 +48,11 @@
 {
     [super viewWillAppear:animated];
     
-    UIBarButtonItem *editBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil)
+    UIBarButtonItem *favBtn = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"+Fav", nil)
                                                                 style:UIBarButtonItemStylePlain
                                                                target:self
-                                                               action:@selector(onEditBtnClick:)];
-    //self.navigationItem.rightBarButtonItem = editBtn;
+                                                               action:@selector(onFavBtnClick:)];
+    self.navigationItem.rightBarButtonItem = favBtn;
     
     PFQuery *query = [PFQuery queryWithClassName:@"Truck_Locations"];
     [query whereKey:@"truck" equalTo:[PFObject objectWithoutDataWithClassName:@"Trucks" objectId:self.truck.truckId]];
@@ -78,11 +78,20 @@
     }];
 }
 
-- (void)onEditBtnClick:(id)sender
+- (void)onFavBtnClick:(id)sender
 {
-    TruckFormViewController *formViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckForm"];
-    formViewController.editTruckForm = self.truck;
-    [self.navigationController pushViewController:formViewController animated:YES];
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"ARCHIVE_FAV_TRUCKS_KEY"];
+    NSMutableArray *favTrucks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if (!favTrucks) favTrucks = [NSMutableArray new];
+    
+    [favTrucks addObject:self.truck];
+    
+    NSData *data2 = [NSKeyedArchiver archivedDataWithRootObject:favTrucks];
+    [[NSUserDefaults standardUserDefaults] setObject:data2 forKey:@"ARCHIVE_FAV_TRUCKS_KEY"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"ReloadMenuView" object:nil];
 }
 
 - (IBAction)onCheckBtnClick:(id)sender
@@ -244,10 +253,6 @@
     } else if (indexPath.row == 4) {
         cell.textLabel.text = @"Website";
         cell.detailTextLabel.text = self.truck.truckWebsite;
-        
-    }else if (indexPath.row == 4) {
-        cell.textLabel.text = @"Add Favorite";
-        cell.detailTextLabel.text = @"Favorite Truck";
         
     }
     
