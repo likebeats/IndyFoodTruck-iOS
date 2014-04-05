@@ -6,6 +6,12 @@
 // project.
 
 
+// FXForms
+#define COCOAPODS_POD_AVAILABLE_FXForms
+#define COCOAPODS_VERSION_MAJOR_FXForms 1
+#define COCOAPODS_VERSION_MINOR_FXForms 1
+#define COCOAPODS_VERSION_PATCH_FXForms 1
+
 // HexColors
 #define COCOAPODS_POD_AVAILABLE_HexColors
 #define COCOAPODS_VERSION_MAJOR_HexColors 2

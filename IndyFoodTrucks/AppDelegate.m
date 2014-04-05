@@ -28,6 +28,7 @@
                                       nil];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#6faea4"]];
     [[UINavigationBar appearance] setTitleTextAttributes:textTitleOptions];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     // Override point for customization after application launch.
     self.dynamicsDrawerViewController = (MSDynamicsDrawerViewController *)self.window.rootViewController;
