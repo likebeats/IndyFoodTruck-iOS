@@ -39,6 +39,8 @@
 		65E9657318EF8629000877C4 /* TruckLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9657218EF8629000877C4 /* TruckLoginViewController.m */; };
 		65E9657418EF8629000877C4 /* TruckLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9657218EF8629000877C4 /* TruckLoginViewController.m */; };
 		65E9657618EF8708000877C4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E9657518EF8708000877C4 /* MapKit.framework */; };
+		65E9658C18EF8933000877C4 /* CCActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9658918EF8933000877C4 /* CCActionSheet.m */; };
+		65E9658D18EF8933000877C4 /* CCAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65E9658B18EF8933000877C4 /* CCAlertView.m */; };
 		EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF218EF5F0C00770C4B /* MenuViewController.m */; };
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,10 @@
 		65E9657118EF8629000877C4 /* TruckLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckLoginViewController.h; sourceTree = "<group>"; };
 		65E9657218EF8629000877C4 /* TruckLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckLoginViewController.m; sourceTree = "<group>"; };
 		65E9657518EF8708000877C4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		65E9658818EF8933000877C4 /* CCActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCActionSheet.h; path = ../CCActionSheet.h; sourceTree = "<group>"; };
+		65E9658918EF8933000877C4 /* CCActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCActionSheet.m; path = ../CCActionSheet.m; sourceTree = "<group>"; };
+		65E9658A18EF8933000877C4 /* CCAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CCAlertView.h; path = ../CCAlertView.h; sourceTree = "<group>"; };
+		65E9658B18EF8933000877C4 /* CCAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CCAlertView.m; path = ../CCAlertView.m; sourceTree = "<group>"; };
 		EB624DF118EF5F0C00770C4B /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
 		EB624DF218EF5F0C00770C4B /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		EB624DF418EF61E300770C4B /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
@@ -195,6 +201,7 @@
 		65606AF718EB3437007954BB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65E9658E18EF8938000877C4 /* CCActionSheet & CCAlertview */,
 				65606AF818EB3437007954BB /* IndyFoodTrucks-Info.plist */,
 				65606AF918EB3437007954BB /* InfoPlist.strings */,
 				65606AFC18EB3437007954BB /* main.m */,
@@ -242,6 +249,18 @@
 				65E9657218EF8629000877C4 /* TruckLoginViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		65E9658E18EF8938000877C4 /* CCActionSheet & CCAlertview */ = {
+			isa = PBXGroup;
+			children = (
+				65E9658818EF8933000877C4 /* CCActionSheet.h */,
+				65E9658918EF8933000877C4 /* CCActionSheet.m */,
+				65E9658A18EF8933000877C4 /* CCAlertView.h */,
+				65E9658B18EF8933000877C4 /* CCAlertView.m */,
+			);
+			name = "CCActionSheet & CCAlertview";
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		EB624DFC18EF6D0000770C4B /* Utils */ = {
@@ -390,7 +409,9 @@
 				65E9657318EF8629000877C4 /* TruckLoginViewController.m in Sources */,
 				EB624DF618EF61E300770C4B /* MapViewController.m in Sources */,
 				65606AFD18EB3437007954BB /* main.m in Sources */,
+				65E9658D18EF8933000877C4 /* CCAlertView.m in Sources */,
 				EB624DF318EF5F0C00770C4B /* MenuViewController.m in Sources */,
+				65E9658C18EF8933000877C4 /* CCActionSheet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
