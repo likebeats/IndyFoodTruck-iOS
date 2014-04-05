@@ -34,7 +34,7 @@
 {
     [super viewDidLoad];
     
-    self.title = self.truck.truckName;
+    self.title = @"Manual";
     
     self.formController = [[FXFormController alloc] init];
     self.formController.tableView = self.tableView;

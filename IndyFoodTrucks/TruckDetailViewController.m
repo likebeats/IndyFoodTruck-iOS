@@ -37,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = self.truck.truckName;
 }
 
 - (void)viewWillAppear:(BOOL)animated
