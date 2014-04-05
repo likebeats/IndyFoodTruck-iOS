@@ -39,7 +39,8 @@
     self.title = @"Future Locations";
     
     futureLocations = [NSMutableArray arrayWithArray:locations];
-    [futureLocations removeObjectAtIndex:[locations indexOfObject:currentLocationObject]];
+    if (currentLocationObject && [locations containsObject:currentLocationObject])
+        [futureLocations removeObjectAtIndex:[locations indexOfObject:currentLocationObject]];
 }
 
 #pragma mark -
