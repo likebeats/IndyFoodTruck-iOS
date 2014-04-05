@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TruckSelectionViewController : UIViewController
+@interface TrucksViewController : UIViewController
 
 @end

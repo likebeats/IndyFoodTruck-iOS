@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 AppDar. All rights reserved.
 //
 
-#import "TruckSelectionViewController.h"
+#import "TrucksViewController.h"
 
-@interface TruckSelectionViewController ()
+@interface TrucksViewController ()
 
 @end
 
-@implementation TruckSelectionViewController
+@implementation TrucksViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

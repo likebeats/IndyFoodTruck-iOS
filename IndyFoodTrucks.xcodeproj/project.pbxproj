@@ -43,7 +43,7 @@
 		EB624DF618EF61E300770C4B /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624DF518EF61E300770C4B /* MapViewController.m */; };
 		EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5418EF8A3400770C4B /* TruckFormViewController.m */; };
 		EB624E5918EF8AE900770C4B /* TruckForm.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5818EF8AE900770C4B /* TruckForm.m */; };
-		EB624E5D18EF90A500770C4B /* TruckSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5C18EF90A500770C4B /* TruckSelectionViewController.m */; };
+		EB624E5D18EF90A500770C4B /* TrucksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5C18EF90A500770C4B /* TrucksViewController.m */; };
 		EB624E6018EF914700770C4B /* TruckDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E5F18EF914700770C4B /* TruckDetailsViewController.m */; };
 		EB624E6818EF93C200770C4B /* TruckCheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB624E6718EF93C200770C4B /* TruckCheckInViewController.m */; };
 		EBE7688518EF99350037755F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBE7688418EF99350037755F /* MapKit.framework */; };
@@ -107,8 +107,8 @@
 		EB624E5418EF8A3400770C4B /* TruckFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckFormViewController.m; sourceTree = "<group>"; };
 		EB624E5718EF8AE900770C4B /* TruckForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckForm.h; sourceTree = "<group>"; };
 		EB624E5818EF8AE900770C4B /* TruckForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckForm.m; sourceTree = "<group>"; };
-		EB624E5B18EF90A500770C4B /* TruckSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckSelectionViewController.h; sourceTree = "<group>"; };
-		EB624E5C18EF90A500770C4B /* TruckSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckSelectionViewController.m; sourceTree = "<group>"; };
+		EB624E5B18EF90A500770C4B /* TrucksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrucksViewController.h; sourceTree = "<group>"; };
+		EB624E5C18EF90A500770C4B /* TrucksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrucksViewController.m; sourceTree = "<group>"; };
 		EB624E5E18EF914700770C4B /* TruckDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckDetailsViewController.h; sourceTree = "<group>"; };
 		EB624E5F18EF914700770C4B /* TruckDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TruckDetailsViewController.m; sourceTree = "<group>"; };
 		EB624E6618EF93C200770C4B /* TruckCheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TruckCheckInViewController.h; sourceTree = "<group>"; };
@@ -298,8 +298,8 @@
 			children = (
 				65E9659218EF9DE7000877C4 /* TruckLoginViewController.h */,
 				65E9659318EF9DE7000877C4 /* TruckLoginViewController.m */,
-				EB624E5B18EF90A500770C4B /* TruckSelectionViewController.h */,
-				EB624E5C18EF90A500770C4B /* TruckSelectionViewController.m */,
+				EB624E5B18EF90A500770C4B /* TrucksViewController.h */,
+				EB624E5C18EF90A500770C4B /* TrucksViewController.m */,
 				EB624E6618EF93C200770C4B /* TruckCheckInViewController.h */,
 				EB624E6718EF93C200770C4B /* TruckCheckInViewController.m */,
 				EB624E5E18EF914700770C4B /* TruckDetailsViewController.h */,
@@ -442,7 +442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB624E5D18EF90A500770C4B /* TruckSelectionViewController.m in Sources */,
+				EB624E5D18EF90A500770C4B /* TrucksViewController.m in Sources */,
 				65E9656E18EF8422000877C4 /* FBMissingSymbols.m in Sources */,
 				65606B0A18EB3437007954BB /* RootViewController.m in Sources */,
 				EB624E5518EF8A3400770C4B /* TruckFormViewController.m in Sources */,
