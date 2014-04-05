@@ -47,6 +47,11 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onReloadMenuView:)
+                                                 name:@"ReloadMenuView"
+                                               object:nil];
+    
     NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:ARCHIVE_FAV_TRUCKS_KEY];
     favTrucks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     
@@ -58,6 +63,18 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.manageTrucksBtn.frame.size.height, 0.0);
     self.tableView.contentInset = contentInsets;
     self.tableView.scrollIndicatorInsets = contentInsets;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+}
+
+- (void)onReloadMenuView:(NSNotification *)notification
+{
+    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:ARCHIVE_FAV_TRUCKS_KEY];
+    favTrucks = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -209,6 +226,10 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
         } else {
             
             TruckForm *truck = [favTrucks objectAtIndex:indexPath.row];
+            
+            NSLog(@"%@", truck.truckId);
+            NSLog(@"%@", truck.truckName);
+            
             TruckDetailViewController *truckDetailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TruckDetail"];
             truckDetailViewController.truck = truck;
             
@@ -245,11 +266,14 @@ NSString * const MSDrawerHeaderReuseIdentifier = @"Drawer Header";
     
     [favTrucks addObject:truckObject];
     
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:favTrucks];
-    [[NSUserDefaults standardUserDefaults] setObject:data forKey:ARCHIVE_FAV_TRUCKS_KEY];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     [self.tableView reloadData];
+    
+    [theTruck saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        truckObject.truckId = theTruck.objectId;
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:favTrucks];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:ARCHIVE_FAV_TRUCKS_KEY];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
 }
 
 -(void)showdate:(id)sender{
