@@ -58,7 +58,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             locations = [objects mutableCopy];
-            NSLog(@"%@", locations);
             [self.tableView reloadData];
         }
     }];
