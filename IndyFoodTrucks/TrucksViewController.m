@@ -74,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (trucks.count == 0) return 1;
+    if (trucks.count == 0 && trucks != nil) return 1;
     return [trucks count];
 }
 
