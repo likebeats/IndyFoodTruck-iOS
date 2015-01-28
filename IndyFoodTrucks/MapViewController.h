@@ -6,8 +6,9 @@
 //  Copyright (c) 2014 AppDar. All rights reserved.
 //
 
-@interface MapViewController : UIViewController
 #import <MapKit/MapKit.h>
+
+@interface MapViewController : UIViewController
 
 @property (nonatomic, weak) MSDynamicsDrawerViewController *dynamicsDrawerViewController;
 
